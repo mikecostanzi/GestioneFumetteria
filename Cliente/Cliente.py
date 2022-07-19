@@ -1,5 +1,5 @@
 import datetime
-import Tessera
+#import Tessera
 class Cliente:
     def __init__(self):
         self.cognome = ""
@@ -9,7 +9,7 @@ class Cliente:
         self.telefono = -2
         self.email = ""
         self.dataNascita = datetime.datetime(year=1970, month=1, day=1)
-        self.Tessera = Tessera
+        #self.Tessera = Tessera
 
     def getCliente(self):
         return {
@@ -20,12 +20,12 @@ class Cliente:
             "telefono": self.telefono,
             "email": self.email,
             "dataNascita": self.dataNascita,
-            "Tessera": self.Tessera
+            #"Tessera": self.Tessera
         }
 
-    def setCliente(self, cognome, nome, idCliente, indirizzo, telefono, email, dataNascita, Tessera):
-        self.cognome = cognome
+    def setCliente(self, nome, cognome, idCliente, indirizzo, telefono, email, dataNascita): #Tessera):
         self.nome = nome
+        self.cognome = cognome
         self.idCliente = idCliente
         self.indirizzo = indirizzo
         self.telefono = telefono

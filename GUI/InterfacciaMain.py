@@ -1,45 +1,49 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel, QLayout
 
 from InterfacciaCliente.OperazioneCliente import OperazioneCliente
 
 
-
 class InterfacciaMain(QWidget):
 
-    def __int__(self, parent):
-        super(InterfacciaMain, self).__int__(parent)
-
+    def __init__(self, parent=None):
+        super(InterfacciaMain, self).__init__(parent)
         l = QGridLayout()
-        l.addWidget(self.get_button("Acquisto", self.go_acquisto), 0,0)
-        l.addWidget(self.get_button("Noleggio",self.go_noleggio), 0,1)
-        l.addWidget(self.get_button("Cliente",self.go_cliente),0,2)
-        l.addWidget(self.get_button("FumettiAcquistabili", self.go_fumettiA),1,0)
-        l.addWidget(self.get_button("FumettiNoleggiabili", self.go_fumettiN), 1, 1)
-        l.addWidget(self.get_button("Statistiche", self.go_statistiche), 1, 2)
-        #b = QLabel()
-        #b.setLayout(l)
-        #b.setText("Quale operazione vuoi effettuare?")
+
+        b = QLabel()
+        b.setText("Scegli l'operazione:")
+        l.addWidget(b)
+        l.addWidget(self.get_generic_button("Acquisto", self.go_acquisto), 1, 0)
+        l.addWidget(self.get_generic_button("Noleggioi", self.go_noleggio), 1, 1)
+        l.addWidget(self.get_generic_button("Cliente", self.go_clienti), 1, 2)
+        l.addWidget(self.get_generic_button("Fumetti Acquistabili", self.go_fumettiA), 2, 0)
+        l.addWidget(self.get_generic_button("Fumetti Noleggiabili", self.go_fumettiN), 2, 1)
+        l.addWidget(self.get_generic_button("Statistiche", self.go_statistiche), 2,2)
+
         self.setLayout(l)
-        self.resize(400,300)
-        self.setWindowTitle("MAIN")
+        self.resize(500, 500)
+        self.setWindowTitle("Main")
 
-
-
-    def get_button(self,opzione,click):
-        button = QPushButton(opzione)
-        button.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
-        button.click.connect(click)
-        pass
+    def get_generic_button(self, titolo, on_click):
+        button = QPushButton(titolo)
+        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        button.clicked.connect(on_click)
+        return button
 
     def go_acquisto(self):
         pass
+
+    def go_clienti(self):
+        self.vista_gestisci_clienti = OperazioneCliente
+        self.vista_gestisci_clienti.show()
+
     def go_noleggio(self):
         pass
-    def go_cliente(self):
-        pass
+
     def go_fumettiA(self):
         pass
+
     def go_fumettiN(self):
         pass
+
     def go_statistiche(self):
         pass

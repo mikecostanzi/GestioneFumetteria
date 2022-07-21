@@ -1,3 +1,5 @@
+from PyQt5.QtWidgets import QWidget
 
-class OperazioneCliente:
+
+class OperazioneCliente(QWidget):
     pass

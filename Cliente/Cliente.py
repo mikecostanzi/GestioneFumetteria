@@ -1,9 +1,12 @@
 import datetime
 #import Tessera
+from Cliente.Tessera import Tessera
+
+
 class Cliente:
     def __init__(self):
+        self.nome = " "
         self.cognome = ""
-        self.nome = ""
         self.idCliente = -1
         self.indirizzo = ""
         self.telefono = -2
@@ -31,4 +34,13 @@ class Cliente:
         self.telefono = telefono
         self.email = email
         self.dataNascita = dataNascita
-        self.Tessera = Tessera
+        #self.Tessera = Tessera
+
+    def rimossoCliente(self):
+        self.nome = " "
+        self.cognome = ""
+        self.idCliente = -1
+        self.indirizzo = ""
+        self.telefono = -2
+        self.email = ""
+        self.dataNascita = datetime.datetime(year=1970, month=1, day=1)

@@ -1,0 +1,3 @@
+
+class OperazioneCliente:
+    pass

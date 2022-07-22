@@ -13,7 +13,7 @@ class InterfacciaMain(QWidget):
         b.setText("Scegli l'operazione:")
         l.addWidget(b)
         l.addWidget(self.get_generic_button("Acquisto", self.go_acquisto), 1, 0)
-        l.addWidget(self.get_generic_button("Noleggioi", self.go_noleggio), 1, 1)
+        l.addWidget(self.get_generic_button("Noleggio", self.go_noleggio), 1, 1)
         l.addWidget(self.get_generic_button("Cliente", self.go_clienti), 1, 2)
         l.addWidget(self.get_generic_button("Fumetti Acquistabili", self.go_fumettiA), 2, 0)
         l.addWidget(self.get_generic_button("Fumetti Noleggiabili", self.go_fumettiN), 2, 1)

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel, QLayout
 
 from InterfacciaCliente.OperazioneCliente import OperazioneCliente
+from InterfacciaFumettiAcquistabiili.OperazioneFumettiA import OperazioneFumettiA
 
 
 class InterfacciaMain(QWidget):
@@ -42,7 +43,9 @@ class InterfacciaMain(QWidget):
         pass
 
     def go_fumettiA(self):
-        pass
+        self.operazione_fumettiA = OperazioneFumettiA()
+        self.operazione_fumettiA.show()
+
 
     def go_fumettiN(self):
         pass

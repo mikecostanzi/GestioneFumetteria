@@ -33,8 +33,10 @@ class InterfacciaMain(QWidget):
         pass
 
     def go_clienti(self):
-        self.vista_gestisci_clienti = OperazioneCliente
-        self.vista_gestisci_clienti.show()
+        self.operazione_cliente = OperazioneCliente()
+        self.operazione_cliente.show()
+
+
 
     def go_noleggio(self):
         pass

@@ -1,3 +1,4 @@
+import math
 from datetime import datetime
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
 from Gestione.GestoreCliente import GestoreCliente
@@ -32,13 +33,25 @@ class InserimentoCliente(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_cliente(self):
+    def aggiungi_cliente(self): ##### IMPORTANTISSIMO ###### # Nicola mi ha obbligato a scrivere il commento così la prox volta controllo questo metodo
+        #ti devi ricordare di inserire cose senza contestare ;)
         try:
-            codice = int(self.qlines["codice"].text())
+            telefono = int(self.qlines["telefono"].text())
+            if telefono == 0 or telefono < 1000000000 or telefono > 9999999999:
+                QMessageBox.critical(self, 'Errore', 'Per favore, inserisci il numero correttamente',
+                                     QMessageBox.Ok, QMessageBox.Ok)
+                return
         except:
-            QMessageBox.critical(self, 'Errore', 'Il codice non sembra un numero valido.', QMessageBox.Ok,
-                                 QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
+                                 QMessageBox.Ok, QMessageBox.Ok)
             return
+        try:
+            codice = int(self.qlines["idCliente"].text()) # PER IL CODICE ID
+        except:
+            QMessageBox.critical(self, 'Errore', 'Nicolaaa hai sbagliato, devi mettere un intero!!!', QMessageBox.Ok,
+                                     QMessageBox.Ok)
+            return
+
         for value in self.qlines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == "":
@@ -47,14 +60,15 @@ class InserimentoCliente(QWidget):
                     return
         cliente = GestoreCliente()
         try:
-            note = self.qlines["note"].text()
+            idCliente = self.qlines["idCliente"].text()
             nome = self.qlines["nome"].text()
             cognome = self.qlines["cognome"].text()
-            codiceFiscale = self.qlines["codiceFiscale"].text()
             dataNascita = datetime.strptime(self.qlines["dataNascita"].text(), '%d/%m/%Y')
+            indirizzo = self.qlines["indirizzo"].text()
             email = self.qlines["email"].text()
-            telefono = int(self.qlines["telefono"].text())
-            cliente.aggiungiCliente(note, [], nome, telefono, email, cognome, dataNascita, codiceFiscale, codice)
+
+
+            cliente.creaCliente(idCliente, nome, cognome, dataNascita, indirizzo,telefono,email)
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
                                  QMessageBox.Ok, QMessageBox.Ok)

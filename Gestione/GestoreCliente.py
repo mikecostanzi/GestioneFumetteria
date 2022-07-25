@@ -7,8 +7,9 @@ class GestoreCliente(Cliente):
         super().__init__()
 
 
-    def creaCliente(self,idCliente, nome, cognome, datNascita, indirizzo,telefono,email):
-        self.setCliente(idCliente,nome,cognome,datNascita,indirizzo,telefono,email,)
+    def creaCliente(self,idCliente, nome, cognome, dataNascita, indirizzo,telefono,email):
+        self.setCliente(idCliente,nome,cognome,dataNascita,indirizzo,telefono,email,)
+
 
         clienti = []
         if os.path.isfile('DatabaseCliente/Clienti.json'):

@@ -2,9 +2,6 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLab
 
 from InterfacciaFumettiNoleggiabili.InserimentoFumettiN import InserimentoFumettiN
 
-
-
-
 class OperazioneFumettiN(QWidget):
 
     def __init__(self, parent=None):

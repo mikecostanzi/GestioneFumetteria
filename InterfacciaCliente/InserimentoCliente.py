@@ -1,4 +1,3 @@
-import math
 from datetime import datetime
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
 from Gestione.GestoreCliente import GestoreCliente
@@ -48,7 +47,7 @@ class InserimentoCliente(QWidget):
         try:
             codice = int(self.qlines["idCliente"].text()) # PER IL CODICE ID
         except:
-            QMessageBox.critical(self, 'Errore', 'Nicolaaa hai sbagliato, devi mettere un intero!!!', QMessageBox.Ok,
+            QMessageBox.critical(self, 'Errore', 'Inserimento sbagliato, si prega di inserire un intero', QMessageBox.Ok,
                                      QMessageBox.Ok)
             return
 
@@ -73,7 +72,7 @@ class InserimentoCliente(QWidget):
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
-        self.callback()
+        self.parent()
         self.close()
 
 

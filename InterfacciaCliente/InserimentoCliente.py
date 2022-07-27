@@ -45,7 +45,7 @@ class InserimentoCliente(QWidget):
                                  QMessageBox.Ok, QMessageBox.Ok)
             return
         try:
-            codice = int(self.qlines["idCliente"].text()) # PER IL CODICE ID
+            idCliente = int(self.qlines["idCliente"].text()) # PER IL CODICE ID
         except:
             QMessageBox.critical(self, 'Errore', 'Inserimento sbagliato, si prega di inserire un intero', QMessageBox.Ok,
                                      QMessageBox.Ok)
@@ -59,7 +59,7 @@ class InserimentoCliente(QWidget):
                     return
         cliente = GestoreCliente()
         try:
-            idCliente = self.qlines["idCliente"].text()
+
             nome = self.qlines["nome"].text()
             cognome = self.qlines["cognome"].text()
             dataNascita = datetime.strptime(self.qlines["dataNascita"].text(), '%d/%m/%Y')

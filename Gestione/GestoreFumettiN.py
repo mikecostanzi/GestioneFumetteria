@@ -1,11 +1,11 @@
 import json
 import os
-from Fumetto.Fumetto import Fumetto
+
 from Fumetto.FumettoNoleggibile import FumettoNoleggiabile
 
 class GestoreFumettiN(FumettoNoleggiabile):
 
-    def __int__(self):
+    def __int__(self,):
         super().__init__()
 
 

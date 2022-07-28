@@ -1,8 +1,8 @@
 class Fumetto:
     def __init__(self):
-        self.categoria = ""
-        self.distributore = ""
-        self.editore = ""
+        self.categoria = " "
+        self.distributore = " "
+        self.editore = " "
         self.collana = -1
         self.sottocollana = -2
 

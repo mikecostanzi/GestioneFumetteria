@@ -43,12 +43,14 @@ class InserimentoFumettiA(QWidget):
             prezzo = float(self.qlines["prezzo"].text())
         except:
             QMessageBox.critical(self, 'Errore', 'Non hai inserito un numero!!! Strunz', QMessageBox.Ok, QMessageBox.Ok)
+            print("Nicolaaaa eh basta")
             return
         for value in self.qlines.values():
             if isinstance(value, QLineEdit):
                 if value.text() == " ":
                     QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
                                          QMessageBox.Ok, QMessageBox.Ok)
+                    print("Nicolaaa eh basta pt 2 ")
                     return
 
 
@@ -60,6 +62,7 @@ class InserimentoFumettiA(QWidget):
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
                                  QMessageBox.Ok, QMessageBox.Ok)
+            print("Nicolaaa eh basta pt 3")
             return
         fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA,
                                    prezzo)  # modificare

@@ -29,37 +29,32 @@ class InserimentoFumettiN(QWidget):
         self.v_layout.addWidget(current_text)
 
     def aggiungi_fumettoN(self):
-
+        fumettoN = GestoreFumettiN()  # modificare gestore fumetti
         try:
-            barcodeN = int(self.qlines["barcodeN"].text())  # PER IL CODICE ID
+            collana = int(self.qlines["collana"].text())
+            sotto_collana = int(self.qlines["sotto_collana"].text())
+            prezzo = float(self.qlines["prezzo"].text())
         except:
-            QMessageBox.critical(self, 'Errore', 'Nicolaaa hai sbagliato, devi mettere un intero!!!',
-                                    QMessageBox.Ok,
-                                 QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Non hai inserito un numero corretto', QMessageBox.Ok, QMessageBox.Ok)
             return
 
         for value in self.qlines.values():
-             if isinstance(value, QLineEdit):
-                if value.text() == "":
+            if isinstance(value, QLineEdit):
+                if value.text() == " ":
                     QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
-        fumettoN = GestoreFumettiN()
+
         try:
-            idCliente = self.qlines["idCliente"].text()
-            nome = self.qlines["nome"].text()
-            cognome = self.qlines["cognome"].text()
-
-            indirizzo = self.qlines["indirizzo"].text()
-            email = self.qlines["email"].text()
-
-            fumettoN.creaCliente()
+            categoria = self.qlines["categoria"].text()
+            distributore = self.qlines["distributore"].text()
+            editore = self.qlines["editore"].text()
+            barcodeN = self.qlines["barcode"].text()
         except:
-            QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
-                                    QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',QMessageBox.Ok, QMessageBox.Ok)
             return
+
+        fumettoN.aggiungi_fumettoN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo)  # modificare
         self.parent()
         self.close()
-
-
 

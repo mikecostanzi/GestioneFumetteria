@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel
 from Gestione.GestoreFumettiA import GestoreFumettiA
 import math as math
 
+
 class InserimentoFumettiA(QWidget):
     def __init__(self, parent=None):
         super(InserimentoFumettiA, self).__init__(parent)
@@ -18,7 +19,6 @@ class InserimentoFumettiA(QWidget):
         self.add_info_text("barcodeA", "Bar-code")
         self.add_info_text("prezzo", "Prezzo")
 
-
         btn_ok = QPushButton("OK")
         btn_ok.clicked.connect(self.aggiungi_fumettiA)
         self.qlines["btn_ok"] = btn_ok
@@ -33,34 +33,37 @@ class InserimentoFumettiA(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_fumettiA(self): ##### IMPORTANTISSIMO ###### # sistemare le varie verifiche, il codice prende il primo try/exept che incontra
+    def aggiungi_fumettiA(self): ###IMPORTANTE### Credo che il problema e' dell'inserimento del Barcode
+                                                # il for funziona, il primo try/except anche, il secondo si inceppa
 
-        fumettoA = GestoreFumettiA()  # modificare gestore fumetti
+        for value in self.qlines.values():
+            if isinstance(value, QLineEdit):
+                if value.text() == "":
+                    QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste', QMessageBox.Ok, QMessageBox.Ok)
+                    return
+
+        fumettoA = GestoreFumettiA()
+
         try:
-            collana = int(self.qlines["collana"].text())  # PER IL CODICE ID
+            collana = int(self.qlines["collana"].text())
             sotto_collana = int(self.qlines["sotto_collana"].text())
             prezzo = float(self.qlines["prezzo"].text())
         except:
-            QMessageBox.critical(self, 'Errore', 'Non hai inserito un numero!!! Strunz', QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Inserisci un valore corretto (Collana, Sottocollana, Prezzo)', QMessageBox.Ok, QMessageBox.Ok)
             return
-        for value in self.qlines.values():
-            if isinstance(value, QLineEdit):
-                if value.text() == " ":
-                    QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
-                                         QMessageBox.Ok, QMessageBox.Ok)
-                    return
+
 
 
         try:
-            categoria = self.qlines["categoria"].text()
-            distributore = self.qlines["distributore"].text()
-            editore = self.qlines["editore"].text()
-            barcodeA = self.qlines["barcode"].text()
+            categoria = str(self.qlines["categoria"].text())
+            distributore = str(self.qlines["distributore"].text())
+            editore = str(self.qlines["editore"].text())
+            barcodeA = int(self.qlines["barcode"].text())
         except:
-            QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
-                                 QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, 'Errore', 'Inserisci un nome corretto (Categoria, Distributore, Editore, Barcode)', QMessageBox.Ok, QMessageBox.Ok)
             return
-        fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA,
-                                   prezzo)  # modificare
+
+        fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo)
+
         self.parent()
         self.close()

@@ -1,7 +1,8 @@
 from Fumetto import Fumetto
-class FumettoAcquistabile(Fumetto):
+class FumettoAcquistabile():
     def __init__(self):
         super().__init__()
+        self.fumetto = Fumetto
         self.barcodeA = -1
         self.prezzo = -1.01
 

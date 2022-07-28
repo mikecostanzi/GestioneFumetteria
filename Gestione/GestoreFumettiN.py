@@ -9,8 +9,8 @@ class GestoreFumettiN(FumettoNoleggiabile):
         super().__init__()
 
 
-    def creaFumettoN(self, Fumetto, barcodeN, prezzo):
-        self.creaFumettoN(Fumetto, barcodeN, prezzo)
+    def aggiungi_fumettoN(self,categoria,distributore, editore, collana, sottocollana , barcodeN, prezzo):
+        self.creaFumettoN(categoria,distributore, editore, collana, sottocollana , barcodeN, prezzo)
 
         fumettiN = []
         if os.path.isfile('DatabaseFumettiNoleggiabili/FumettiNoleggiabili.json'):

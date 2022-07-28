@@ -39,6 +39,7 @@ class InserimentoFumettiA(QWidget):
         try:
             collana = int(self.qlines["collana"].text())  # PER IL CODICE ID
             sotto_collana = int(self.qlines["sotto_collana"].text())
+            barcodeA = self.qlines["barcode"].text()
             prezzo = float(self.qlines["prezzo"].text())
         except:
             QMessageBox.critical(self, 'Errore', 'Non hai inserito un numero!!! Strunz', QMessageBox.Ok, QMessageBox.Ok)
@@ -55,7 +56,7 @@ class InserimentoFumettiA(QWidget):
             categoria = self.qlines["categoria"].text()
             distributore = self.qlines["distributore"].text()
             editore = self.qlines["editore"].text()
-            barcodeA = self.qlines["barcode"].text()
+
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
                                  QMessageBox.Ok, QMessageBox.Ok)

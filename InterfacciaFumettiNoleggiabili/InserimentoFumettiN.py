@@ -30,10 +30,14 @@ class InserimentoFumettiN(QWidget):
 
     def aggiungi_fumettoN(self):
 
+        fumettoN = GestoreFumettiN()
         try:
-            barcodeN = int(self.qlines["barcodeN"].text())  # PER IL CODICE ID
+            barcodeN = int(self.qlines["barcodeN"].text())# PER IL CODICE ID
+            collana = int(self.qlines["collana"].text())
+            sottocollana = int(self.qlines["sottocollana"].text())
+            prezzo = float(self.qlines["prezzo"].text())
         except:
-            QMessageBox.critical(self, 'Errore', 'Nicolaaa hai sbagliato, devi mettere un intero!!!',
+            QMessageBox.critical(self, 'Errore', 'Nicolaaa hai sbagliato, devi mettere un numero!!!',
                                     QMessageBox.Ok,
                                  QMessageBox.Ok)
             return
@@ -44,20 +48,17 @@ class InserimentoFumettiN(QWidget):
                     QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
                                          QMessageBox.Ok, QMessageBox.Ok)
                     return
-        fumettoN = GestoreFumettiN()
+
         try:
-            idCliente = self.qlines["idCliente"].text()
-            nome = self.qlines["nome"].text()
-            cognome = self.qlines["cognome"].text()
+            categoria = self.qlines["categoria"].text()
+            distributore = self.qlines["cognome"].text()
 
-            indirizzo = self.qlines["indirizzo"].text()
-            email = self.qlines["email"].text()
-
-            fumettoN.creaCliente()
+            editore = self.qlines["indirizzo"].text()
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',
                                     QMessageBox.Ok, QMessageBox.Ok)
             return
+        fumettoN.aggiungi_fumettoN(categoria,distributore, editore, collana, sottocollana , barcodeN, prezzo)
         self.parent()
         self.close()
 

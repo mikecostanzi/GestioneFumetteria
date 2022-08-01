@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
 from InterfacciaFumettiAcquistabiili.InserimentoFumettiA import InserimentoFumettiA
-
+from InterfacciaFumettiAcquistabiili.InserimentoCodiceA import InserimentoCodiceA
 
 class OperazioneFumettiA(QWidget):
 
@@ -12,9 +12,9 @@ class OperazioneFumettiA(QWidget):
         testo_opzione.setText("Scegli l'operazione per il fumetto acquistabile: ")
         grid_layout.addWidget(testo_opzione)
         grid_layout.addWidget(self.get_generic_button("Registra", self.go_crea), 1, 0)
-        grid_layout.addWidget(self.get_generic_button("Modifica", self.go_modifica), 1, 1)
-        grid_layout.addWidget(self.get_generic_button("Visualizza", self.go_visualizza), 2, 0)
-        grid_layout.addWidget(self.get_generic_button("Elimina", self.go_elimina), 2, 1)
+
+        grid_layout.addWidget(self.get_generic_button("Visualizza", self.go_visualizza), 1, 1)
+        grid_layout.addWidget(self.get_generic_button("Elimina/Modifica", self.go_inserimento_codice), 2, 0, 1, 2)
         #grid_layout.addWidget(self.get_generic_button("Gestisci Sistema", self.go_sistema), 2, 0, 1, 2) DA CAMBIARE
 
         self.setLayout(grid_layout)
@@ -27,8 +27,9 @@ class OperazioneFumettiA(QWidget):
         button.clicked.connect(on_click)
         return button
 
-    def go_modifica(self):
-        pass
+    def go_inserimento_codice(self):
+        self.inserimento_codiceA = InserimentoCodiceA()
+        self.inserimento_codiceA.show()
 
     def go_crea(self):
         self.inserimeno_fumettiA = InserimentoFumettiA()

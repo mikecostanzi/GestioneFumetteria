@@ -31,6 +31,14 @@ class InserimentoFumettiN(QWidget):
     def aggiungi_fumettoN(self):
 
         fumettoN = GestoreFumettiN()
+
+        for value in self.qlines.values():
+             if isinstance(value, QLineEdit):
+                if value.text() == " ":
+                    QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
+                                         QMessageBox.Ok, QMessageBox.Ok)
+                    return
+
         try:
             barcodeN = int(self.qlines["barcodeN"].text())# PER IL CODICE ID
             collana = int(self.qlines["collana"].text())
@@ -42,17 +50,11 @@ class InserimentoFumettiN(QWidget):
                                  QMessageBox.Ok)
             return
 
-        for value in self.qlines.values():
-             if isinstance(value, QLineEdit):
-                if value.text() == "":
-                    QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
-                                         QMessageBox.Ok, QMessageBox.Ok)
-                    return
+
 
         try:
             categoria = self.qlines["categoria"].text()
             distributore = self.qlines["cognome"].text()
-
             editore = self.qlines["indirizzo"].text()
         except:
             QMessageBox.critical(self, 'Errore', 'Controlla bene i dati inseriti',

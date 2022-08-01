@@ -1,4 +1,5 @@
 import json
+from json import *
 import os.path
 
 
@@ -11,18 +12,24 @@ class GestoreFumettiA(FumettoAcquistabile):
 
 
     def aggiungi_fumettoA(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo):
-        self.setFumettoAcquistabile(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo)
+        
+        self.setFumettoAcquistabile(categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo)
 
-        fumettiA = []
+        fumettiA = [self.getInfoFumettoA()]
         if os.path.isfile('DatabaseFumettiAcquistabili/FumettiAcquistabili.json'):
-            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'r') as f:
-                fumettiA = json.load(f)
-        fumettiA[barcodeA] = self
-        print(fumettiA)
-        with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'w') as f:
-            json.dump(fumettiA, f)
+            #with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'r') as f:
+                #fumettiA = json.load(f)
+            #fumettiA[barcodeA] = self
+        #print(fumettiA)
+            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'a') as f:
+                json.dump(fumettiA, f)
+        else:
+            return print("Nicolaaaa pure qua")
+
+
 
     def getInfoFumettoA(self):
+
         info = self.getFumettoAcquistabile()
         return info
 

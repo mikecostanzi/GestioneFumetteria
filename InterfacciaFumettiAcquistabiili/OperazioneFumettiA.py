@@ -29,6 +29,7 @@ class OperazioneFumettiA(QWidget):
 
     def go_inserimento_codice(self):
         self.inserimento_codiceA = InserimentoCodiceA()
+        print("Nicola")
         self.inserimento_codiceA.show()
 
     def go_crea(self):

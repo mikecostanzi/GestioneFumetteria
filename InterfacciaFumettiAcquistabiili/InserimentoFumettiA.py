@@ -10,14 +10,7 @@ class InserimentoFumettiA(QWidget):
         self.v_layout = QVBoxLayout()
         self.qlines = {}
 
-        self.add_info_text("categoria", "Categoria")
-        self.add_info_text("distributore", "Distributore")
-        self.add_info_text("editore", "Editore")
-        self.add_info_text("collana", "Collana")
-        self.add_info_text("sotto_collana", "Sotto collana")
-        self.add_info_text("barcodeA", "Bar-code")
-        self.add_info_text("prezzo", "Prezzo")
-
+        self.add_info_text("quantita", "Quantità")
 
         btn_ok = QPushButton("OK")
         btn_ok.clicked.connect(self.aggiungi_fumettiA)
@@ -49,6 +42,7 @@ class InserimentoFumettiA(QWidget):
             sotto_collana = int(self.qlines["sotto_collana"].text())
             barcodeA = int(self.qlines["barcodeA"].text())
             prezzo = float(self.qlines["prezzo"].text())
+            quantita = int(self.qlines["quantita"].text())
         except:
             QMessageBox.critical(self, "Errore", 'Numero non corretto!')
             return
@@ -58,6 +52,6 @@ class InserimentoFumettiA(QWidget):
 
 
 
-        fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo)
+        fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo,quantita)
         self.parent()
         self.close()

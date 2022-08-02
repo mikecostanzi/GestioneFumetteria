@@ -11,9 +11,9 @@ class GestoreFumettiA(FumettoAcquistabile):
         super().__init__()
 
 
-    def aggiungi_fumettoA(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo):
+    def aggiungi_fumettoA(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo,quantita):
         
-        self.setFumettoAcquistabile(categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo)
+        self.setFumettoAcquistabile(categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo, quantita)
 
         fumettiA = [self.getInfoFumettoA()]
         if os.path.isfile('DatabaseFumettiAcquistabili/FumettiAcquistabili.json'):

@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
-
-from InterfacciaFumettiAcquistabiili.InserimentoCodiceA import InserimentoCodiceA
+import InserimentoCodiceA
 
 class EliminaA(QWidget):
     def __init__(self,parent=None):

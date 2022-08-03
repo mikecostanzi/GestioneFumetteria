@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget,QLineEdit, QGridLayout, QPushButton, QSizePolicy, QLabel
-from InterfacciaFumettiAcquistabiili.ModificaA import ModificaA
-from InterfacciaFumettiAcquistabiili.EliminaA import EliminaA
+import ModificaA
+import EliminaA
 
 
 class InserimentoCodiceA(QWidget):

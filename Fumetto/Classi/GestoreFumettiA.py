@@ -3,7 +3,7 @@ from json import *
 import os.path
 
 
-from Fumetto.FumettoAcquistabile import FumettoAcquistabile
+from Fumetto.Classi.FumettoAcquistabile import FumettoAcquistabile
 
 
 class GestoreFumettiA(FumettoAcquistabile):

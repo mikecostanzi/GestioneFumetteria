@@ -1,11 +1,11 @@
 import array as arr
 import datetime
-import Fumetto.FumettoAcquistabile
+import Fumetto.Classi.FumettoAcquistabile
 class Acquisto:
     def __init__(self):
         self.idAcquisto = -1
-        self.FumettoAcquistabile = Fumetto.FumettoAcquistabile
-        self.acquisti = arr.array(Fumetto.FumettoAcquistabile)
+        self.FumettoAcquistabile = Fumetto.Classi.FumettoAcquistabile
+        self.acquisti = arr.array(Fumetto.Classi.FumettoAcquistabile)
         self.dataAcquisto =datetime.datetime
         self.importo = -1.01
 

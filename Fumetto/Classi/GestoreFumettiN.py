@@ -1,7 +1,7 @@
 import json
 import os
 
-from Fumetto.FumettoNoleggibile import FumettoNoleggiabile
+from Fumetto.Classi.FumettoNoleggibile import FumettoNoleggiabile
 
 class GestoreFumettiN(FumettoNoleggiabile):
 

@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel, QLayout
+from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from InterfacciaCliente.OperazioneCliente import OperazioneCliente
-from InterfacciaFumettiAcquistabiili.OperazioneFumettiA import OperazioneFumettiA
-from InterfacciaFumettiNoleggiabili.OperazioneFumettiN import OperazioneFumettiN
+from Cliente.Grafica.OperazioneCliente import OperazioneCliente
+from Fumetto.GraficaA.OperazioneFumettiA import OperazioneFumettiA
+from Fumetto.GraficaN.OperazioneFumettiN import OperazioneFumettiN
 
 
 class InterfacciaMain(QWidget):

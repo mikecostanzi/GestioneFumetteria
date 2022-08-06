@@ -1,15 +1,14 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from InterfacciaCliente.InserimentoCliente import InserimentoCliente
+from Fumetto.GraficaN.InserimentoFumettiN import InserimentoFumettiN
 
-
-class OperazioneCliente(QWidget):
+class OperazioneFumettiN(QWidget):
 
     def __init__(self, parent=None):
-        super(OperazioneCliente, self).__init__(parent)
+        super(OperazioneFumettiN, self).__init__(parent)
         grid_layout = QGridLayout()
         testo_opzione = QLabel()
-        testo_opzione.setText("Scegli l'operazione per il cliente: ")
+        testo_opzione.setText("Scegli l'operazione per il fumetto noleggiabile: ")
         grid_layout.addWidget(testo_opzione)
         grid_layout.addWidget(self.get_generic_button("Registra", self.go_crea), 1, 0)
         grid_layout.addWidget(self.get_generic_button("Modifica", self.go_modifica), 1, 1)
@@ -19,7 +18,7 @@ class OperazioneCliente(QWidget):
 
         self.setLayout(grid_layout)
         self.resize(500, 500)
-        self.setWindowTitle("Cliente")
+        self.setWindowTitle("Fumetti Noleggiabili")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
@@ -31,17 +30,11 @@ class OperazioneCliente(QWidget):
         pass
 
     def go_crea(self):
-        self.inserimeno_cliente = InserimentoCliente()
-        self.inserimeno_cliente.show()
+        self.inserimeno_fumettiN = InserimentoFumettiN()
+        self.inserimeno_fumettiN.show()
 
     def go_visualizza(self):
         pass
 
     def go_elimina(self):
         pass
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 import datetime
 #import Tessera
-from Cliente.Tessera import Tessera
+from Cliente.Classi.Tessera import Tessera
 
 
 class Cliente:

@@ -1,4 +1,4 @@
-from Fumetto.Fumetto import Fumetto
+from Fumetto.Classi.Fumetto import Fumetto
 
 class FumettoNoleggiabile(Fumetto):
     def __init__(self):

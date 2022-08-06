@@ -1,6 +1,6 @@
 import json
 import os
-from Cliente.Cliente import Cliente
+from Cliente.Classi.Cliente import Cliente
 class GestoreCliente(Cliente):
 
     def __int__(self):

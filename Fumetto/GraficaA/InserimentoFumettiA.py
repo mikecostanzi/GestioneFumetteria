@@ -1,7 +1,6 @@
-from datetime import datetime
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
-from Gestione.GestoreFumettiA import GestoreFumettiA
-import math as math
+from Fumetto.Classi.GestoreFumettiA import GestoreFumettiA
+
 
 class InserimentoFumettiA(QWidget):
     def __init__(self, parent = None):

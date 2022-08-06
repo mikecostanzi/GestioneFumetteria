@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from InterfacciaFumettiAcquistabiili.InserimentoFumettiA import InserimentoFumettiA
-from InterfacciaFumettiAcquistabiili.InserimentoCodiceA import InserimentoCodiceA
+from Fumetto.GraficaA.InserimentoFumettiA import InserimentoFumettiA
+from Fumetto.GraficaA.InserimentoCodiceA import InserimentoCodiceA
 
 class OperazioneFumettiA(QWidget):
 

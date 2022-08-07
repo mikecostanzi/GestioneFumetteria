@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
 from Fumetto.GraficaA.InserimentoFumettiA import InserimentoFumettiA
-from Fumetto.GraficaA.InserimentoCodiceA import InserimentoCodiceA
 
 class OperazioneFumettiA(QWidget):
 
@@ -28,13 +27,14 @@ class OperazioneFumettiA(QWidget):
         return button
 
     def go_inserimento_codice(self):
-        self.inserimento_codiceA = InserimentoCodiceA()
-        print("Nicola")
-        self.inserimento_codiceA.show()
+        pass
+        #self.inserimento_codiceA = InserimentoCodiceA()
+        #print("Nicola")
+        #self.inserimento_codiceA.show()
 
     def go_crea(self):
-        self.inserimeno_fumettiA = InserimentoFumettiA()
-        self.inserimeno_fumettiA.show()
+        self.inserimento_fumettiA = InserimentoFumettiA()
+        self.inserimento_fumettiA.show()
 
     def go_visualizza(self):
         pass

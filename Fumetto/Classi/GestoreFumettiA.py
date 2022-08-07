@@ -1,5 +1,4 @@
 import json
-from json import *
 import os.path
 
 
@@ -11,31 +10,26 @@ class GestoreFumettiA(FumettoAcquistabile):
         super().__init__()
 
 
-    def aggiungi_fumettoA(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo,quantita):
+    def aggiungi_fumettoA(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo, quantita):
         
         self.setFumettoAcquistabile(categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo, quantita)
 
         fumettiA = [self.getInfoFumettoA()]
-        if os.path.isfile('DatabaseFumettiAcquistabili/FumettiAcquistabili.json'):
-            #with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'r') as f:
-                #fumettiA = json.load(f)
+        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
+            #with open('Fumetto/Database/FumettiAcquistabili.json', 'rt') as f:
+            #    fumettiA = dict(json.load(f))
             #fumettiA[barcodeA] = self
-        #print(fumettiA)
-            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'a') as f:
+            with open('Fumetto/Database/FumettiAcquistabili.json', 'at') as f:
                 json.dump(fumettiA, f)
-        else:
-            return print("Nicolaaaa pure qua")
-
 
 
     def getInfoFumettoA(self):
-
         info = self.getFumettoAcquistabile()
         return info
 
     def ricercaFumettoA(self, barcodeA):
-        if os.path.isfile('DatabaseFumettiAcquistabili/FumettiAcquistabili.json'):
-            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'r') as f:
+        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
+            with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
                 fumettiA = dict(json.load(f))
                 for fumettiA in fumettiA.values():
                     if fumettiA.barcodeA == barcodeA:
@@ -47,11 +41,11 @@ class GestoreFumettiA(FumettoAcquistabile):
             return print("File non trovato")
 
     def rimuoviFumettoA(self):
-        if os.path.isfile('DatabaseFumettiAcquistabili/FumettiAcquistabili.json'):
-            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'r') as f:
+        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
+            with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
                 fumettiA = dict(json.load(f))
                 del fumettiA[self.barcodeA]
-            with open('DatabaseFumettiAcquistabili/FumettiAcquistabili.json', 'w') as f:
+            with open('Fumetto/Database/FumettiAcquistabili.json', 'w') as f:
                 json.dump(fumettiA, f)
         self.rimossoFumettoA()
         del self

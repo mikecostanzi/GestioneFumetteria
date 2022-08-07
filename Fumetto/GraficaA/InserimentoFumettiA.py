@@ -9,7 +9,14 @@ class InserimentoFumettiA(QWidget):
         self.v_layout = QVBoxLayout()
         self.qlines = {}
 
+        self.add_info_text("barcodeA", "Barcode")
+        self.add_info_text("categoria", "Categoria")
+        self.add_info_text("distributore", "Distributore")
+        self.add_info_text("editore", "Editore")
+        self.add_info_text("collana", "Collana")
+        self.add_info_text("sotto_collana", "Sotto collana")
         self.add_info_text("quantita", "Quantità")
+        self.add_info_text("prezzo", "Prezzo")
 
         btn_ok = QPushButton("OK")
         btn_ok.clicked.connect(self.aggiungi_fumettiA)
@@ -25,32 +32,27 @@ class InserimentoFumettiA(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_fumettiA(self): ##### IMPORTANTISSIMO ###### # sistemare le varie verifiche, il codice prende il primo try/exept che incontra
-
-        for value in self.qlines.values():
-            if isinstance(value, QLineEdit):
-                if value.text() == " ":
-                    QMessageBox.critical(self, 'Errore', 'Per favore, inserisci tutte le informazioni richieste',
-                                         QMessageBox.Ok, QMessageBox.Ok)
-                    return
-
-        fumettoA = GestoreFumettiA()  # modificare gestore fumetti
-
+    def aggiungi_fumettiA(self):
+        fumettoA = GestoreFumettiA()
         try:
-            collana = int(self.qlines["collana"].text())  # PER IL CODICE ID
+            collana = int(self.qlines["collana"].text())
             sotto_collana = int(self.qlines["sotto_collana"].text())
             barcodeA = int(self.qlines["barcodeA"].text())
-            prezzo = float(self.qlines["prezzo"].text())
+            prezzo = int(self.qlines["prezzo"].text())
             quantita = int(self.qlines["quantita"].text())
+            categoria = self.qlines["categoria"].text()
+            distributore = self.qlines["distributore"].text()
+            editore = self.qlines["editore"].text()
+
         except:
-            QMessageBox.critical(self, "Errore", 'Numero non corretto!')
+            QMessageBox.critical(self, "Errore", "Campi", QMessageBox.Ok, QMessageBox.Ok)
             return
-        categoria = self.qlines["categoria"].text()
-        distributore = self.qlines["distributore"].text()
-        editore = self.qlines["editore"].text()
 
+        try:
+            fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo, quantita)
+        except:
+            QMessageBox.critical(self, "Errore", "Json", QMessageBox.Ok, QMessageBox.Ok)
+            return
 
-
-        fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo,quantita)
         self.parent()
         self.close()

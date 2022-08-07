@@ -14,11 +14,11 @@ class FumettoAcquistabile(Fumetto):
             "quantita": self.quantita
         }
 
-    def setFumettoAcquistabile(self,categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo,quantita):
+    def setFumettoAcquistabile(self, categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo, quantita):
         self.setFumetto(categoria,distributore,editore,collana,sottocollana)
         self.barcodeA = barcodeA
         self.prezzo = prezzo
-        self.quantita
+        self.quantita = quantita
 
     def rimossoFumettoA(self):
         self.rimossoFumetto()

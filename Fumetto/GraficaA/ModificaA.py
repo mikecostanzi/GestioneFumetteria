@@ -25,7 +25,7 @@ class ModificaA(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_fumettiA(self): ##### IMPORTANTISSIMO ###### # sistemare le varie verifiche, il codice prende il primo try/exept che incontra
+    def modifica_fumettiA(self): ##### IMPORTANTISSIMO ###### # sistemare le varie verifiche, il codice prende il primo try/exept che incontra
 
         for value in self.qlines.values():
             if isinstance(value, QLineEdit):

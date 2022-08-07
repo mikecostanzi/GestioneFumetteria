@@ -1,10 +1,10 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
-import InserimentoCodiceA
+#from Fumetto.GraficaA.InserimentoCodiceA import InserimentoCodiceA
 
 class EliminaA(QWidget):
     def __init__(self,parent=None):
         super(EliminaA, self).__init__(parent)
-        q = InserimentoCodiceA
+        #q = InserimentoCodiceA
         v = QGridLayout()
         b = QLabel()
         b.setText("Annichilito")

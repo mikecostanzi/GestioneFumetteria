@@ -28,11 +28,9 @@ class OperazioneFumettiA(QWidget):
         return button
 
     def go_inserimento_codice(self):
-
-        self.inserimento_codiceA = InserimentoCodiceA()
-        print("Nicola")
-        self.inserimento_codiceA.show()
-
+        self.inserimento_codice = InserimentoCodiceA()
+        self.inserimento_codice.show()
+        print("Nicolaaa")
     def go_crea(self):
         self.inserimento_fumettiA = InserimentoFumettiA()
         self.inserimento_fumettiA.show()

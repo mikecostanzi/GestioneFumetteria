@@ -32,7 +32,7 @@ class InserimentoFumettiN(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_fumettiA(self):
+    def aggiungi_fumettiN(self):
         fumettoN = GestoreFumettiN()
         try:
             collana = int(self.qlines["collana"].text())

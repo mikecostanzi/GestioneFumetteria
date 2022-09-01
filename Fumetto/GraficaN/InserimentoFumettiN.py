@@ -49,7 +49,7 @@ class InserimentoFumettiN(QWidget):
             return
 
         try:
-            fumettoN.aggiungi_fumettoN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
+            fumettoN.aggiungi_fumettiN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
         except:
             QMessageBox.critical(self, "Errore", "Json", QMessageBox.Ok, QMessageBox.Ok)
             return

@@ -1,3 +1,3 @@
 [{"fumetto": {"categoria": "ads", "distributore": "sad", "editore": "ads", "collana": 1, "sottocollana": 1}, "barcodeA": 1, "prezzo": 1, "quantita": 1},
 {"fumetto": {"categoria": "asd", "distributore": "asdad", "editore": "ad", "collana": 2, "sottocollana": 2}, "barcodeA": 2, "prezzo": 2, "quantita": 2},
-  {"fumetto": {"categoria": "asd", "distributore": "sad", "editore": "asd", "collana": 1, "sottocollana": 1}, "barcodeA": 1, "prezzo": 1, "quantita": 1}]
+  {"fumetto": {"categoria": "asd", "distributore": "sad", "editore": "asd", "collana": 1, "sottocollana": 1}, "barcodeA": 3, "prezzo": 1, "quantita": 1}]

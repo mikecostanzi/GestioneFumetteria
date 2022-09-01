@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushB
 from Fumetto.GraficaA.VistaFumetto import VistaFumetto
 from Fumetto.Classi.FumettoAcquistabile import FumettoAcquistabile
 from Fumetto.GraficaA.ClienteSelezionato import ClienteSelezionato
+from Fumetto.Classi.GestoreFumettiA import GestoreFumettiA
 
 class InserimentoCodiceA(QWidget):
 
@@ -13,13 +14,7 @@ class InserimentoCodiceA(QWidget):
         super(InserimentoCodiceA, self).__init__(parent)
 
         self.grid_layout = QGridLayout()
-
         self.list_view = QListView()
-
-        #self.update_ui()
-
-        #self.lista_layout = QHBoxLayout()
-        #self.lista_layout.addWidget(self.list_view)
 
         self.dato = QLabel("Digita il codice")
         self.barra_ricerca = QLineEdit()
@@ -40,23 +35,30 @@ class InserimentoCodiceA(QWidget):
         self.resize(500, 500)
         self.setWindowTitle("Gestisci Clienti")
 
-
-
-        """"
-        buttons_layout = QVBoxLayout()
-        
-        buttons_layout.addWidget(open_button)
-
-        
-        buttons_layout.addWidget(new_button)
-        buttons_layout.addStretch()
-        h_layout.addLayout(buttons_layout)
-        """
-
     def load_fumetti(self):
-        pass
+        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
+            with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
+                current = dict(json.load(f))
+                self.fumetti.extend(current.values())
+
+
     def lista(self):
-        pass
+        self.fumetti = []
+        self.load_fumetti()
+        #self.ricerca = GestoreFumettiA()
+        #self.ricerca.ricercaFumettoA(self.barra_ricerca)
+        lista_model = QStandardItemModel(self.list_view)
+        for fumetto in self.fumetti:
+            item = QStandardItem()
+            riga = f"{fumetto.barcodeA} {fumetto.categoria} {fumetto.collana} {fumetto.sottocollana}"
+            item.setText(riga)
+            item.setEditable(False)
+            item.setFont(item.font().setPointSize(18))
+            lista_model.appendRow(item)
+        self.list_view.setModel(lista_model)
+
+
+
     def show_selecteded_info(self):
         self.open_cliente = ClienteSelezionato()
         self.open_cliente.show()

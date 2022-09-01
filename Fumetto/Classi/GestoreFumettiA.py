@@ -34,9 +34,9 @@ class GestoreFumettiA(FumettoAcquistabile):
                 for fumettiA in fumettiA.values():
                     if fumettiA.barcodeA == barcodeA:
                         print("E' entrato qua:" + fumettiA)
-                        print(fumettiA.get(barcodeA, None))
-                        return fumettiA
-                return ("Finita la ricerca")
+
+
+                    return ("Finita la ricerca")
         else:
             return print("File non trovato")
 

@@ -13,11 +13,11 @@ class GestoreFumettiN(FumettoNoleggiabile):
         self.setFumettoNoleggiabile(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
 
         fumettiN = [self.getInfoFumettoN()]
-        if os.path.isfile('Fumetto/Database/FumettiNoleggiabile.json'):
+        if os.path.isfile('Fumetto/Database/FumettiNoleggiabili.json'):
             # with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
             #    fumettiA = json.load(f)
             # fumettiA[barcodeA] = self
-            with open('Fumetto/Database/FumettiNoleggiabile.json', 'at') as f:
+            with open('Fumetto/Database/FumettiNoleggiabili.json', 'at') as f:
                 json.dump(fumettiN, f)
 
     def getInfoFumettoN(self):

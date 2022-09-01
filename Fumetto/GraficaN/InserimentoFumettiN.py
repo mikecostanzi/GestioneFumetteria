@@ -19,7 +19,7 @@ class InserimentoFumettiN(QWidget):
         self.add_info_text("prezzo", "Prezzo")
 
         btn_ok = QPushButton("OK")
-        btn_ok.clicked.connect(self.aggiungi_fumettiA)
+        btn_ok.clicked.connect(self.aggiungi_fumettiN)
         self.qlines["btn_ok"] = btn_ok
         self.v_layout.addWidget(btn_ok)
 
@@ -49,7 +49,7 @@ class InserimentoFumettiN(QWidget):
             return
 
         try:
-            fumettoN.aggiungi_fumettiN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
+            fumettoN.aggiungi_fumettoN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
         except:
             QMessageBox.critical(self, "Errore", "Json", QMessageBox.Ok, QMessageBox.Ok)
             return

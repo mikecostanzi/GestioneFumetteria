@@ -35,19 +35,19 @@ class InserimentoFumettiN(QWidget):
     def aggiungi_fumettiN(self):
         fumettoN = GestoreFumettiN()
         try:
-            collana = int(self.qlines["collana"].text())
-            sotto_collana = int(self.qlines["sotto_collana"].text())
+
             barcodeN = int(self.qlines["barcodeN"].text())
-            prezzo = int(self.qlines["prezzo"].text())
-            quantita = int(self.qlines["quantita"].text())
             categoria = self.qlines["categoria"].text()
             distributore = self.qlines["distributore"].text()
             editore = self.qlines["editore"].text()
+            collana = int(self.qlines["collana"].text())
+            sotto_collana = int(self.qlines["sotto_collana"].text())
+            quantita = int(self.qlines["quantita"].text())
+            prezzo = int(self.qlines["prezzo"].text())
 
         except:
             QMessageBox.critical(self, "Errore", "Campi", QMessageBox.Ok, QMessageBox.Ok)
             return
-
         try:
             fumettoN.aggiungi_fumettoN(categoria, distributore, editore, collana, sotto_collana, barcodeN, prezzo, quantita)
         except:

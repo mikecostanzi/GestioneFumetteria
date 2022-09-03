@@ -1,9 +1,7 @@
 import json
 import os.path
 
-
 from Fumetto.Classi.FumettoAcquistabile import FumettoAcquistabile
-
 
 class GestoreFumettiA(FumettoAcquistabile):
     def __init__(self):

@@ -15,8 +15,8 @@ class FumettoNoleggiabile(Fumetto):
             "quantita": self.quantita
         }
 
-    def setFumettoNoleggiabile(self,categoria,distributore, editore, collana, sottocollana , barcodeN, prezzo, quantita):
-        self.setFumetto(self,categoria,distributore, editore, collana, sottocollana)
+    def setFumettoNoleggiabile(self, categoria,distributore, editore, collana, sottocollana , barcodeN, prezzo, quantita):
+        self.setFumetto(self, categoria,distributore, editore, collana, sottocollana)
         self.barcodeN = barcodeN
         self.prezzo = prezzo
         self.quantita = quantita

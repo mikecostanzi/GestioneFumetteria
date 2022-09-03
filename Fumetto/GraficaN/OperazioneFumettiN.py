@@ -8,7 +8,7 @@ class OperazioneFumettiN(QWidget):
         super(OperazioneFumettiN, self).__init__(parent)
         grid_layout = QGridLayout()
         testo_opzione = QLabel()
-        testo_opzione.setText("Scegli l'operazione per il fumetto acquistabile: ")
+        testo_opzione.setText("Scegli l'operazione per il fumetto noleggiabile: ")
         grid_layout.addWidget(testo_opzione)
         grid_layout.addWidget(self.get_generic_button("Registra", self.go_crea), 1, 0)
 
@@ -18,7 +18,7 @@ class OperazioneFumettiN(QWidget):
 
         self.setLayout(grid_layout)
         self.resize(500, 500)
-        self.setWindowTitle("Fumetti Acquista")
+        self.setWindowTitle("Fumetti Noleggia")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)

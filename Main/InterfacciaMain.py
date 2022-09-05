@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLab
 from Cliente.Grafica.OperazioneCliente import OperazioneCliente
 from Fumetto.GraficaA.OperazioneFumettiA import OperazioneFumettiA
 from Fumetto.GraficaN.OperazioneFumettiN import OperazioneFumettiN
+from Noleggio.Grafica.OperazioniNoleggio import OperazioniNoleggio
 
 
 class InterfacciaMain(QWidget):
@@ -41,7 +42,8 @@ class InterfacciaMain(QWidget):
 
 
     def go_noleggio(self):
-        pass
+        self.operazione_noleggio = OperazioniNoleggio()
+        self.operazione_noleggio.show()
 
     def go_fumettiA(self):
         self.operazione_fumettiA = OperazioneFumettiA()

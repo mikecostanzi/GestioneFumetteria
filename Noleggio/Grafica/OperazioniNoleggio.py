@@ -1,28 +1,42 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton
+from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton, QSizePolicy, QGridLayout
+
+from Noleggio.Grafica.InserimentoNoleggio import InserimentoNoleggio
+from Noleggio.Grafica.RestituzioneNoleggio import RestituzioneNoleggio
+from Noleggio.Grafica.RicercaNoleggio import RicercaNoleggio
 
 
 class OperazioniNoleggio(QWidget):
 
     def __int__(self,parent=None):
         super(OperazioniNoleggio, self).__int__(parent)
-        l = QGridLayout()
-        b = QLabel("Scegli l'operazione:")
-        l.addWidget(b)
-        l.addWidget(self.generic_button("Inserimento Noleggio",self.get_inserimento),1,0)
-        l.addWidget(self.generic_button("Restituzione Noleggio",self.get_restituzione),1,1)
-        l.addWidget(self.generic_button("Ricerca Noleggio",self.get_ricerca),2,0)
-        self.setLayout(l)
-        self.resize(300,500)
-        self.setWindowTitle("Operazioni sul Noleggio")
 
+        set_layout = QGridLayout()
+
+        b = QLabel()
+        b.setText("Scegli l'operazione:")
+        set_layout.addWidget(b)
+        set_layout.addWidget(self.generic_button("Inserisci",self.go_inserisci),1,0)
+        set_layout.addWidget(self.generic_button("Restituzione",self.go_restituzione),1,1)
+        set_layout.addWidget(self.generic_button("Ricerca",self.go_ricerca),1,2)
+
+        self.setLayout(set_layout)
+        self.resize(500, 500)
+        self.setWindowTitle("Noleggio")
 
     def generic_button(self,titolo,click):
         button = QPushButton(titolo)
+        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         button.clicked.connect(click)
         return button
-    def get_inserimento(self):
-        pass
-    def get_restituzione(self):
-        pass
-    def get_ricerca(self):
-        pass
+
+    def go_inserisci(self):
+        self.inserimento_noleggio = InserimentoNoleggio()
+        self.inserimento_noleggio.show()
+
+
+    def go_restituzione(self):
+        self.restituzione_noleggio = RestituzioneNoleggio()
+        self.restituzione_noleggio.show()
+    def go_ricerca(self):
+        self.ricerca_noleggio = RicercaNoleggio()
+        self.ricerca_noleggio.show()

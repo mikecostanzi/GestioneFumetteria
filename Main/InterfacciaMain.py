@@ -42,8 +42,8 @@ class InterfacciaMain(QWidget):
 
 
     def go_noleggio(self):
-        self.operazione_noleggio = OperazioniNoleggio()
-        self.operazione_noleggio.show()
+        self.operazioni_noleggio = OperazioniNoleggio()
+        self.operazioni_noleggio.show()
 
     def go_fumettiA(self):
         self.operazione_fumettiA = OperazioneFumettiA()

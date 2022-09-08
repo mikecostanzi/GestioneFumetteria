@@ -5,7 +5,6 @@ from Fumetto.GraficaA.OperazioneFumettiA import OperazioneFumettiA
 from Fumetto.GraficaN.OperazioneFumettiN import OperazioneFumettiN
 from Noleggio.Grafica.OperazioniNoleggio import OperazioniNoleggio
 
-
 class InterfacciaMain(QWidget):
 
     def __init__(self, parent=None):

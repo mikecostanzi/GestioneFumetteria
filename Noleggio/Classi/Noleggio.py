@@ -1,23 +1,22 @@
 import array as arr
+from Cliente.Classi.Cliente import Cliente
 import datetime
-import Mora
-import Fumetto
+from Fumetto.Classi.FumettoNoleggibile import FumettoNoleggiabile
 class Noleggio:
     def __init__(self):
         self.idNoleggio = -1
-        self.FumettoNoleggiabile = Fumetto.Classi.FumettoNoleggibile
-        self.noleggi = arr.array(Fumetto.Classi.FumettoNoleggibile)
+        self.FumettoNoleggiabile = FumettoNoleggiabile()
         self.dataInizioNoleggio = datetime.datetime
-        self.dataRestituzione = datetime.datetime
-        self.Mora = Mora
+        self.dataRestituzione = self.dataInizioNoleggio
+        self.mora = False
 
     def getNoleggio(self):
         return {
             "idNoleggio": self.idNoleggio,
-            "noleggi": self.noleggi,
+            "fumetto": self.FumettoNoleggiabile,
             "dataInizioNoleggio": self.dataInizioNoleggio,
             "dataRestituzione": self.dataRestituzione,
-            "Mora": self.Mora
+            "mora": self.Mora
         }
 
     def setNoleggio(self, idNoleggio, noleggi, dataInizioNoleggio, dataRestituzione, Mora):

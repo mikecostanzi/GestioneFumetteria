@@ -1,14 +1,15 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from Fumetto.GraficaN.InserimentoFumettiN import InserimentoFumettiN
+from Fumetto.View.InserimentoCodice import InserimentoCodiceA
+from Fumetto.View.InserimentoFumetti import InserimentoFumettiA
 
-class OperazioneFumettiN(QWidget):
+class OperazioneFumettiA(QWidget):
 
     def __init__(self, parent=None):
-        super(OperazioneFumettiN, self).__init__(parent)
+        super(OperazioneFumettiA, self).__init__(parent)
         grid_layout = QGridLayout()
         testo_opzione = QLabel()
-        testo_opzione.setText("Scegli l'operazione per il fumetto noleggiabile: ")
+        testo_opzione.setText("Scegli l'operazione per il fumetto acquistabile: ")
         grid_layout.addWidget(testo_opzione)
         grid_layout.addWidget(self.get_generic_button("Registra", self.go_crea), 1, 0)
 
@@ -18,7 +19,7 @@ class OperazioneFumettiN(QWidget):
 
         self.setLayout(grid_layout)
         self.resize(500, 500)
-        self.setWindowTitle("Fumetti Noleggia")
+        self.setWindowTitle("Fumetti Acquista")
 
     def get_generic_button(self, titolo, on_click):
         button = QPushButton(titolo)
@@ -27,14 +28,12 @@ class OperazioneFumettiN(QWidget):
         return button
 
     def go_inserimento_codice(self):
-        pass
-        #self.inserimento_codiceA = InserimentoCodiceA()
-        #print("Nicola")
-        #self.inserimento_codiceA.show()
-
+        self.inserimento_codice = InserimentoCodiceA()
+        self.inserimento_codice.show()
+        print("Nicolaaa")
     def go_crea(self):
-        self.inserimento_fumettiN = InserimentoFumettiN()
-        self.inserimento_fumettiN.show()
+        self.inserimento_fumettiA = InserimentoFumettiA()
+        self.inserimento_fumettiA.show()
 
     def go_visualizza(self):
         pass

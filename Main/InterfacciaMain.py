@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
 from Cliente.Grafica.OperazioneCliente import OperazioneCliente
-from Fumetto.GraficaA.OperazioneFumettiA import OperazioneFumettiA
+from Fumetto.View.OperazioneFumetti import OperazioneFumettiA
 from Fumetto.GraficaN.OperazioneFumettiN import OperazioneFumettiN
 from Noleggio.Grafica.OperazioniNoleggio import OperazioniNoleggio
 

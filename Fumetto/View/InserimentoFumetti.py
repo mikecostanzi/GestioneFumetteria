@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
-from Fumetto.Classi.GestoreFumettiA import GestoreFumettiA
+from Fumetto.Controller.GestoreFumetti import GestoreFumettiA
 
 
 class InserimentoFumettiA(QWidget):

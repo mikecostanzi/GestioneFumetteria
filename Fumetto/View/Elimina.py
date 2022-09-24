@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
-#from Fumetto.GraficaA.InserimentoCodiceA import InserimentoCodiceA
+#from Fumetto.View.InserimentoCodiceA import InserimentoCodiceA
 
 class EliminaA(QWidget):
     def __init__(self,parent=None):

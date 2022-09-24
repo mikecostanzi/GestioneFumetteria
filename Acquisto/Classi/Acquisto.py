@@ -1,6 +1,6 @@
 import array as arr
 import datetime
-import Fumetto.Classi.FumettoAcquistabile
+import Fumetto.Model.FumettoAcquistabile
 class Acquisto:
     def __init__(self):
         self.idAcquisto = -1

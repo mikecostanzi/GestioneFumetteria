@@ -1,7 +1,7 @@
 import json
 import os.path
 
-from Fumetto.Classi.FumettoAcquistabile import FumettoAcquistabile
+from Fumetto.Model.FumettoAcquistabile import FumettoAcquistabile
 
 class GestoreFumettiA(FumettoAcquistabile):
     def __init__(self):
@@ -13,11 +13,11 @@ class GestoreFumettiA(FumettoAcquistabile):
         self.setFumettoAcquistabile(categoria,distributore, editore, collana, sottocollana , barcodeA, prezzo, quantita)
 
         fumettiA = [self.getInfoFumettoA()]
-        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
-            #with open('Fumetto/Database/FumettiAcquistabili.json', 'rt') as f:
+        if os.path.isfile('Fumetto/Database/Fumetti.pickle'):
+            #with open('Fumetto/Database/Fumetti.pickle', 'rt') as f:
             #    fumettiA = dict(json.load(f))
             #fumettiA[barcodeA] = self
-            with open('Fumetto/Database/FumettiAcquistabili.json', 'at') as f:
+            with open('Fumetto/Database/Fumetti.pickle', 'at') as f:
                 json.dump(fumettiA, f)
 
 
@@ -26,8 +26,8 @@ class GestoreFumettiA(FumettoAcquistabile):
         return info
 
     def ricercaFumettoA(self, barcodeA):
-        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
-            with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
+        if os.path.isfile('Fumetto/Database/Fumetti.pickle'):
+            with open('Fumetto/Database/Fumetti.pickle', 'r') as f:
                 fumettiA = dict(json.load(f))
                 for fumettiA in fumettiA.values():
                     if fumettiA.barcodeA == barcodeA:
@@ -39,11 +39,11 @@ class GestoreFumettiA(FumettoAcquistabile):
             return print("File non trovato")
 
     def rimuoviFumettoA(self):
-        if os.path.isfile('Fumetto/Database/FumettiAcquistabili.json'):
-            with open('Fumetto/Database/FumettiAcquistabili.json', 'r') as f:
+        if os.path.isfile('Fumetto/Database/Fumetti.pickle'):
+            with open('Fumetto/Database/Fumetti.pickle', 'r') as f:
                 fumettiA = dict(json.load(f))
                 del fumettiA[self.barcodeA]
-            with open('Fumetto/Database/FumettiAcquistabili.json', 'w') as f:
+            with open('Fumetto/Database/Fumetti.pickle', 'w') as f:
                 json.dump(fumettiA, f)
         self.rimossoFumettoA()
         del self

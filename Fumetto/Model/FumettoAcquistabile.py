@@ -1,4 +1,4 @@
-from Fumetto.Classi.Fumetto import Fumetto
+from Fumetto.Model.Fumetto import Fumetto
 class FumettoAcquistabile(Fumetto):
     def __init__(self):
         super().__init__()

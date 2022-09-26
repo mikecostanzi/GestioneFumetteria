@@ -1,4 +1,1 @@
-Pezzi di codice che non funzionano:
---> Inserimento Codice: blank screen
---> InserimentoFumettiN: Crash + Inserimento dont work
---> Nel Json viene inserito a cazzum de canis
+RIFARE TUTTO DA CAPO

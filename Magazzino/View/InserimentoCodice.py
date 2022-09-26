@@ -3,7 +3,7 @@ import json
 
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QListView, QPushButton, QGridLayout, QLabel, QLineEdit
-from Fumetto.View.ClienteSelezionato import ClienteSelezionato
+from Magazzino.View.ClienteSelezionato import ClienteSelezionato
 
 
 class InserimentoCodiceA(QWidget):
@@ -34,8 +34,8 @@ class InserimentoCodiceA(QWidget):
         self.setWindowTitle("Gestisci Clienti")
 
     def load_fumetti(self):
-        if os.path.isfile('Fumetto/Database/Fumetti.pickle'):
-            with open('Fumetto/Database/Fumetti.pickle', 'r') as f:
+        if os.path.isfile('Magazzino/Database/Fumetti.pickle'):
+            with open('Magazzino/Database/Fumetti.pickle', 'r') as f:
                 current = dict(json.load(f))
                 self.fumetti.extend(current.values())
 

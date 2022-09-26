@@ -1,15 +1,15 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
-from Fumetto.Controller.GestoreFumetti import GestoreFumettiA
+from Magazzino.Controller.GestoreFumetti import GestoreFumetti
 
 
-class InserimentoFumettiA(QWidget):
+class InserimentoFumetti(QWidget):
     def __init__(self, parent = None):
-        super(InserimentoFumettiA, self).__init__(parent)
+        super(InserimentoFumetti, self).__init__(parent)
 
         self.v_layout = QVBoxLayout()
         self.qlines = {}
 
-        self.add_info_text("barcodeA", "Barcode")
+        self.add_info_text("barcode", "Barcode")
         self.add_info_text("categoria", "Categoria")
         self.add_info_text("distributore", "Distributore")
         self.add_info_text("editore", "Editore")
@@ -33,7 +33,7 @@ class InserimentoFumettiA(QWidget):
         self.v_layout.addWidget(current_text)
 
     def aggiungi_fumettiA(self):
-        fumettoA = GestoreFumettiA()
+        fumettoA = GestoreFumetti()
         try:
             collana = int(self.qlines["collana"].text())
             sotto_collana = int(self.qlines["sotto_collana"].text())

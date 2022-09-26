@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from Cliente.Grafica.InserimentoCliente import InserimentoCliente
+from Cliente.View.InserimentoCliente import InserimentoCliente
 
 
 class OperazioneCliente(QWidget):

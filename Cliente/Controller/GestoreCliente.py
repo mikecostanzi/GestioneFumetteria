@@ -1,6 +1,6 @@
 import json
 import os
-from Cliente.Classi.Cliente import Cliente
+from Cliente.Model.Cliente import Cliente
 class GestoreCliente(Cliente):
 
     def __int__(self):
@@ -12,12 +12,12 @@ class GestoreCliente(Cliente):
 
 
         clienti = []
-        if os.path.isfile('DatabaseCliente/Clienti.json'):
-            with open('DatabaseCliente/Clienti.json', 'r') as f:
+        if os.path.isfile('DatabaseCliente/Clienti.pickle'):
+            with open('DatabaseCliente/Clienti.pickle', 'r') as f:
                 clienti = json.load(f)
         clienti[idCliente] = self
         print(clienti)
-        with open('DatabaseCliente/Clienti.json', 'w') as f:
+        with open('DatabaseCliente/Clienti.pickle', 'w') as f:
             json.dump(clienti,f)
 
     def getInfoCliente(self):
@@ -25,8 +25,8 @@ class GestoreCliente(Cliente):
         return info
 
     def ricercaCliente(self, nome, cognome, telefono, idCliente):
-        if os.path.isfile('DatabaseCliente/Clienti.json'):
-            with open('DatabaseCliente/Clienti.json', 'r') as f:
+        if os.path.isfile('DatabaseCliente/Clienti.pickle'):
+            with open('DatabaseCliente/Clienti.pickle', 'r') as f:
                 clienti = dict(json.load(f))
                 for cliente in clienti.values():
                     if cliente.nome == nome and cliente.cognome == cognome and cliente.telefono == telefono:
@@ -39,11 +39,11 @@ class GestoreCliente(Cliente):
 
 
     def rimuoviCliente(self):
-        if os.path.isfile('DatabaseCliente/Clienti.json'):
-            with open('DatabaseCliente/Clienti.json','r') as f:
+        if os.path.isfile('DatabaseCliente/Clienti.pickle'):
+            with open('DatabaseCliente/Clienti.pickle','r') as f:
                 clienti = dict(json.load(f))
                 del clienti[self.idCliente]
-            with open('DatabaseCliente/Clienti.json', 'w') as f:
+            with open('DatabaseCliente/Clienti.pickle', 'w') as f:
                 json.dump(clienti,f)
         self.rimossoCliente()
         del self

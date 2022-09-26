@@ -1,6 +1,6 @@
 from datetime import datetime
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLineEdit, QLabel, QMessageBox
-from Cliente.Classi.GestoreCliente import GestoreCliente
+from Cliente.Controller.GestoreCliente import GestoreCliente
 
 class InserimentoCliente(QWidget):
     def __init__(self, parent=None):

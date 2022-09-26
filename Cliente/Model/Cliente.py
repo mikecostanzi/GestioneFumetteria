@@ -1,19 +1,14 @@
 import datetime
-#import Tessera
-from Cliente.Classi.Tessera import Tessera
-
 
 class Cliente:
     def __init__(self):
         self.idCliente = -1
         self.nome = " "
         self.cognome = ""
-        self.dataNascita = datetime.datetime(year=1970, month=1, day=1)
+        self.dataNascita = datetime.datetime(day=1, month=1, year=1970)
         self.indirizzo = ""
-        self.telefono = -2
+        self.telefono = ""
         self.email = ""
-
-        #self.Tessera = Tessera
 
     def getCliente(self):
         return {
@@ -24,11 +19,9 @@ class Cliente:
             "indirizzo": self.indirizzo,
             "telefono": self.telefono,
             "email": self.email,
-
-            #"Tessera": self.Tessera
         }
 
-    def setCliente(self, idCliente,nome, cognome, dataNascita,indirizzo, telefono, email): #Tessera):
+    def setCliente(self, idCliente,nome, cognome, dataNascita,indirizzo, telefono, email):
         self.idCliente = idCliente
         self.nome = nome
         self.cognome = cognome
@@ -37,13 +30,11 @@ class Cliente:
         self.telefono = telefono
         self.email = email
 
-        #self.Tessera = Tessera
-
     def rimossoCliente(self):
         self.idCliente = -1
         self.nome = " "
         self.cognome = ""
-        self.dataNascita = datetime.datetime(year=1970, month=1, day=1)
+        self.dataNascita = datetime.datetime(day=1, month=1, year=1970)
         self.indirizzo = ""
-        self.telefono = -2
+        self.telefono = ""
         self.email = ""

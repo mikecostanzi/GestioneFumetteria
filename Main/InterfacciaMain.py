@@ -1,9 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from Cliente.Grafica.OperazioneCliente import OperazioneCliente
-from Fumetto.View.OperazioneFumetti import OperazioneFumettiA
-from Fumetto.GraficaN.OperazioneFumettiN import OperazioneFumettiN
-from Noleggio.Grafica.OperazioniNoleggio import OperazioniNoleggio
+from Cliente.View.OperazioneCliente import OperazioneCliente
+from Cliente.View.OperazioniTessera import OperazioniTessera
+from Magazzino.View.ListaFumetti import ListaFumetti
 
 class InterfacciaMain(QWidget):
 
@@ -14,11 +13,10 @@ class InterfacciaMain(QWidget):
         b = QLabel()
         b.setText("Scegli l'operazione:")
         l.addWidget(b)
-        l.addWidget(self.get_generic_button("Acquisto", self.go_acquisto), 1, 0)
-        l.addWidget(self.get_generic_button("Noleggio", self.go_noleggio), 1, 1)
-        l.addWidget(self.get_generic_button("Cliente", self.go_clienti), 1, 2)
-        l.addWidget(self.get_generic_button("Fumetti Acquistabili", self.go_fumettiA), 2, 0)
-        l.addWidget(self.get_generic_button("Fumetti Noleggiabili", self.go_fumettiN), 2, 1)
+        l.addWidget(self.get_generic_button("Cliente", self.go_cliente), 1, 0)
+        l.addWidget(self.get_generic_button("Magazzino", self.go_magazzino), 1, 1)
+        l.addWidget(self.get_generic_button("Acquisto", self.go_acquisto), 1, 2)
+        l.addWidget(self.get_generic_button("Buckup", self.go_buckup), 2, 1)
         l.addWidget(self.get_generic_button("Statistiche", self.go_statistiche), 2,2)
 
         self.setLayout(l)
@@ -31,27 +29,17 @@ class InterfacciaMain(QWidget):
         button.clicked.connect(on_click)
         return button
 
+    def go_cliente(self):
+        self.view = OperazioniTessera()
+        self.view.show()
+
+    def go_magazzino(self):
+        self.lista_fumetti = ListaFumetti()
+        self.lista_fumetti.show()
+
     def go_acquisto(self):
         pass
-
-    def go_clienti(self):
-        self.operazione_cliente = OperazioneCliente()
-        self.operazione_cliente.show()
-
-
-
-    def go_noleggio(self):
-        self.operazioni_noleggio = OperazioniNoleggio()
-        self.operazioni_noleggio.show()
-
-    def go_fumettiA(self):
-        self.operazione_fumettiA = OperazioneFumettiA()
-        self.operazione_fumettiA.show()
-
-
-    def go_fumettiN(self):
-        self.operazione_fumettiN = OperazioneFumettiN()
-        self.operazione_fumettiN.show()
-
+    def go_buckup(self):
+        pass
     def go_statistiche(self):
         pass

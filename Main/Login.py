@@ -32,5 +32,5 @@ class Login(QWidget):
             self.interfaccia_main.show()
             self.close()
         else:
-            QMessageBox.critical(self,"Accesso negato", "Riprova se hai il coraggio",QMessageBox.Ok,QMessageBox.Ok)
+            QMessageBox.critical(self,"Accesso negato", "RIPROVA SE HAI IL CORAGGIO",QMessageBox.Ok,QMessageBox.Ok)
 

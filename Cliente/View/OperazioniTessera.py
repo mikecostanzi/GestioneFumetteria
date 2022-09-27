@@ -37,8 +37,8 @@ class OperazioniTessera(QWidget):
 
     def load_tessere(self):
         if os.path.isfile('Cliente/Database/Clienti.pickle'):
-            with open('Cliente/Database/Clienti.pickle', 'at') as f:
-                current = list(pickle.load(f))
+            with open('Cliente/Database/Clienti.pickle', 'rb') as f:
+                current = pickle.load(f)
                 self.tessere.extend(current.values())
         else:
             print("Nicola sempre colpa tua")

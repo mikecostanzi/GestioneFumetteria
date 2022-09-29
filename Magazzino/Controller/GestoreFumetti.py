@@ -7,8 +7,8 @@ class GestoreFumetti(Fumetto):
     def __init__(self):
         super(Fumetto).__init__()
         self.fumetti = []
-        if os.path.isfile('Database/Fumetti.pickle'):
-            with open('Database/Fumetti.pickle','r') as f:
+        if os.path.isfile('Magazzino/Database/Fumetti.pickle'):
+            with open('Magazzino/Database/Fumetti.pickle','r') as f:
                 self.fumetti = list(pickle.load(f))
 
     def save_data(self):

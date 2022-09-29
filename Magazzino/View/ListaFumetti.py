@@ -32,12 +32,26 @@ class ListaFumetti(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Gestisci Magazzino")
 
+    '''
+        file = open('Magazzino/Database/Fumetti.pickle', 'wb')
+        # dump information to that file
+        pickle.dump(list(range(19)),file)
+        # close the file
+        file.close()
+    '''
+
+
     def load_fumetti(self):
-        if os.path.isfile('Magazzino/Database/Fumetti.pickle'):
-            with open('Magazzino/Database/Fumetti.pickle','ab+') as f:
-                g = list(pickle.loads(f))
-                print(g)
-                self.fumetti.extend(g)
+        # open a file, where you stored the pickled data
+        file = open('Magazzino/Database/Fumetti.pickle', 'rb')
+
+        # dump information to that file
+        data = pickle.load(file)
+
+        # close the file
+        file.close()
+        print(data)
+        self.fumetti.extend(data)
 
     def update_ui(self):
         self.fumetti = []

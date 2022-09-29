@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QSizePolicy, QLabel
 
-from Cliente.View.OperazioneCliente import OperazioneCliente
+
 from Cliente.View.OperazioniTessera import OperazioniTessera
 from Magazzino.View.ListaFumetti import ListaFumetti
 

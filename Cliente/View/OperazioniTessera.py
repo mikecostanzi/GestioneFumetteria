@@ -25,7 +25,7 @@ class OperazioniTessera(QWidget):
         btn_new.clicked.connect(self.show_selected_info)
         ot_btn.addWidget(btn_new)
         ot_btn.addStretch()
-        ot.addWidget(ot_btn)
+        ot.addLayout(ot_btn)
 
         self.setLayout(ot)
         self.resize(500, 500)
@@ -34,8 +34,8 @@ class OperazioniTessera(QWidget):
     def load_tessere(self):
         if os.path.isfile("Cliente/Database/Clienti.pickle"):
             with open("Cliente/Database/Clienti.pickle", "rb") as f:
-                current = dict(pickle.load(f))
-                self.tessere.extend(current.values())
+                current = pickle.load(f)
+                self.tessere.extend(current)
 
     def update_ui(self):
         self.tessere = []

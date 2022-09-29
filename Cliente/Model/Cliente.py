@@ -1,11 +1,11 @@
-import datetime
+from datetime import datetime
 
 class Cliente:
     def __init__(self):
         self.idCliente = -1
         self.nome = " "
         self.cognome = ""
-        self.dataNascita = datetime.datetime(day=1, month=1, year=1970)
+        self.dataNascita = datetime.datetime(day=1, month=1, year=1922)
         self.indirizzo = ""
         self.telefono = ""
         self.email = ""
@@ -21,7 +21,7 @@ class Cliente:
             "email": self.email,
         }
 
-    def setCliente(self, idCliente,nome, cognome, dataNascita,indirizzo, telefono, email):
+    def setCliente(self, idCliente, nome, cognome, dataNascita, indirizzo, telefono, email):
         self.idCliente = idCliente
         self.nome = nome
         self.cognome = cognome
@@ -30,11 +30,11 @@ class Cliente:
         self.telefono = telefono
         self.email = email
 
-    def rimossoCliente(self):
+    def delCliente(self):
         self.idCliente = -1
         self.nome = " "
         self.cognome = ""
-        self.dataNascita = datetime.datetime(day=1, month=1, year=1970)
+        self.dataNascita = datetime.datetime(day=1, month=1, year=1922)
         self.indirizzo = ""
         self.telefono = ""
         self.email = ""

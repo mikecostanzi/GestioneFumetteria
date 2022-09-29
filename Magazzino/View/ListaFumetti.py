@@ -83,5 +83,5 @@ class ListaFumetti(QWidget):
             return
 
     def show_new(self):
-        self.inserisci_fumetto = InserimentoFumetti(callback=self.update_ui)
+        self.inserisci_fumetto = InserimentoFumetti()
         self.inserisci_fumetto.show()

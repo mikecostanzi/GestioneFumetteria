@@ -11,29 +11,33 @@ class GestoreTessera(Tessera):
     def creaTessera(self, idCliente, nome, cognome, dataNascita, indirizzo, telefono, email, dataIscrizione, numeroPunti):
         self.setTessera(idCliente, nome, cognome, dataNascita, indirizzo, telefono, email, dataIscrizione, numeroPunti)
         tessere = {}
-        if os.path.isfile('Cliente/Database/Clienti.pickle'):
-            with open('Cliente/Database/Clienti.pickle', 'rb') as f:
+        if os.path.isfile('Cliente/Database/Clienti.pkl'):
+            with open('Cliente/Database/Clienti.pkl', 'rb') as f:
                 tessere = pickle.load(f)
             tessere[idCliente] = self
-            with open('Cliente/Database/Clienti.pickle', 'wb') as f:
+            with open('Cliente/Database/Clienti.pkl', 'wb') as f:
                 pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
 
     def infoTessera(self):
         return self.getTessera()
 
-    def ricercaTessera(self):
-        if os.path.isfile('Cliente/Database/Clienti.pickle'):
-            with open('Cliente/Database/Clienti.pickle', 'rb') as f:
+    def ricercaTessera(self, idCliente):
+        if os.path.isfile('Cliente/Database/Clienti.pkl'):
+            with open('Cliente/Database/Clienti.pkl', 'rb') as f:
                 tessere = dict(pickle.load(f))
-                # capire cosa s'intende per "for cliente in clienti.values():"
-                pass
+                for tessera in tessere.values():
+                    if tessera.idCliente == idCliente:
+                        return tessera
+                return None
+        else:
+            return None
 
     def eliminaTessera(self):
-        if os.path.isfile('Cliente/Database/Clienti.pickle'):
-            with open('Clietne/Database/Clienti.pickle', 'rb') as f:
+        if os.path.isfile('Cliente/Database/Clienti.pkl'):
+            with open('Clietne/Database/Clienti.pkl', 'rb') as f:
                 tessere = dict(pickle.load(f))
                 del tessere[self.idCliente]
-            with open('Cliente/Database/Clienti.pickle', 'wb') as f:
+            with open('Cliente/Database/Clienti.pkl', 'wb') as f:
                 pickle.dump(tessere, f, pickle.HIGHEST_PROTOCOL)
             self.delTessera()
             del self

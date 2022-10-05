@@ -32,8 +32,8 @@ class OperazioniTessera(QWidget):
         self.setWindowTitle("Gestore Tessera")
 
     def load_tessere(self):
-        if os.path.isfile("Cliente/Database/Clienti.pickle"):
-            with open("Cliente/Database/Clienti.pickle", "rb") as f:
+        if os.path.isfile("Cliente/Database/Clienti.pkl"):
+            with open("Cliente/Database/Clienti.pkl", "rb") as f:
                 current = pickle.load(f)
                 self.tessere.extend(current)
 
@@ -53,7 +53,18 @@ class OperazioniTessera(QWidget):
         self.list_view.setModel(listview_model)
 
     def show_selected_info(self):
-        pass
+        try:
+            selected = self.list_view.selectedIndexes()[0].data() # Index Error
+            tipo = selected.split("-")[1].strip().split(" ")[0]
+            idCliente = int(selected.split("-")[1].strip().split(" ")[1])
+            tessera = None
+            if tipo == "Tessera":
+                Tessera = GestoreTessera().ricercaTessera(idCliente)
+            self.viewT = ViewTessera(tessera, elimina_callback=self.update_ui)
+            self.viewT.show()
+        except IndexError:
+            print("INDEX ERROR")
+            return
 
     def show_new(self):
         self.inserimentoTessera = InserimentoTessera()

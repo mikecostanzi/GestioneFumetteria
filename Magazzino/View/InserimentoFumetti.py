@@ -33,25 +33,34 @@ class InserimentoFumetti(QWidget):
         self.v_layout.addWidget(current_text)
 
     def aggiungi_fumettiA(self):
-        fumettoA = GestoreFumetti()
+        fumetto = GestoreFumetti()
         try:
             collana = int(self.qlines["collana"].text())
+            print("Ciao1")
             sotto_collana = int(self.qlines["sotto_collana"].text())
-            barcodeA = int(self.qlines["barcodeA"].text())
-            prezzo = int(self.qlines["prezzo"].text())
+            print("Ciao1")
+            barcode = int(self.qlines["barcode"].text())
+            print("Ciao1")
+            prezzo = float(self.qlines["prezzo"].text())
+            print("Ciao1")
             quantita = int(self.qlines["quantita"].text())
+            print("Ciao1")
             categoria = self.qlines["categoria"].text()
+            print("Ciao3")
             distributore = self.qlines["distributore"].text()
+            print("Ciao2")
             editore = self.qlines["editore"].text()
 
+
         except:
-            QMessageBox.critical(self, "Errore", "Campi", QMessageBox.Ok, QMessageBox.Ok)
+
+            QMessageBox.critical(self, "Errore", "Errore di paramentri", QMessageBox.Ok, QMessageBox.Ok)
             return
 
         try:
-            fumettoA.aggiungi_fumettoA(categoria, distributore, editore, collana, sotto_collana, barcodeA, prezzo, quantita)
+            fumetto.aggiungi_fumetto(categoria, distributore, editore, collana, sotto_collana, barcode, prezzo, quantita)
         except:
-            QMessageBox.critical(self, "Errore", "Json", QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(self, "Errore", "Pickle", QMessageBox.Ok, QMessageBox.Ok)
             return
 
         self.parent()

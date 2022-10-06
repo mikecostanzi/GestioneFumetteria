@@ -22,7 +22,7 @@ class OperazioniTessera(QWidget):
         ot_btn.addWidget(btn_open)
 
         btn_new = QPushButton('Nuovo')
-        btn_new.clicked.connect(self.show_selected_info)
+        btn_new.clicked.connect(self.show_new)
         ot_btn.addWidget(btn_new)
         ot_btn.addStretch()
         ot.addLayout(ot_btn)
@@ -32,8 +32,8 @@ class OperazioniTessera(QWidget):
         self.setWindowTitle("Gestore Tessera")
 
     def load_tessere(self):
-        if os.path.isfile("Cliente/Database/Clienti.pkl"):
-            with open("Cliente/Database/Clienti.pkl", "rb") as f:
+        if os.path.isfile("/Cliente/Database/Clienti.pkl"):
+            with open("/Cliente/Database/Clienti.pkl", "rb") as f:
                 current = pickle.load(f)
                 self.tessere.extend(current)
 

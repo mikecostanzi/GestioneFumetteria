@@ -1,6 +1,6 @@
 import os.path
 import pickle
-
+import os
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
@@ -43,7 +43,7 @@ class ListaFumetti(QWidget):
 
     def load_fumetti(self):
         # open a file, where you stored the pickled data
-        file = open('Magazzino/Database/Fumetti.pickle', 'rb')
+        file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
 
         # dump information to that file
         data = pickle.load(file)
@@ -52,6 +52,7 @@ class ListaFumetti(QWidget):
         file.close()
         print(data)
         self.fumetti.extend(data)
+
 
     def update_ui(self):
         self.fumetti = []

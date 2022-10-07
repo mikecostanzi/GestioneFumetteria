@@ -19,7 +19,7 @@ class InserimentoFumetti(QWidget):
         self.add_info_text("prezzo", "Prezzo")
 
         btn_ok = QPushButton("OK")
-        btn_ok.clicked.connect(self.aggiungi_fumettiA)
+        btn_ok.clicked.connect(self.aggiungi_fumetti)
         self.qlines["btn_ok"] = btn_ok
         self.v_layout.addWidget(btn_ok)
 
@@ -32,25 +32,25 @@ class InserimentoFumetti(QWidget):
         self.qlines[nome] = current_text
         self.v_layout.addWidget(current_text)
 
-    def aggiungi_fumettiA(self):
+    def aggiungi_fumetti(self):
         fumetto = GestoreFumetti()
         try:
             collana = int(self.qlines["collana"].text())
-            print("Ciao1")
+            print("Fatto")
             sotto_collana = int(self.qlines["sotto_collana"].text())
-            print("Ciao1")
+            print("Fatto")
             barcode = int(self.qlines["barcode"].text())
-            print("Ciao1")
+            print("Fatto")
             prezzo = float(self.qlines["prezzo"].text())
-            print("Ciao1")
+            print("Fatto")
             quantita = int(self.qlines["quantita"].text())
-            print("Ciao1")
+            print("Fatto")
             categoria = self.qlines["categoria"].text()
-            print("Ciao3")
+            print("Fatto")
             distributore = self.qlines["distributore"].text()
-            print("Ciao2")
+            print("Fatto")
             editore = self.qlines["editore"].text()
-
+            print("Fatto")
 
         except:
 

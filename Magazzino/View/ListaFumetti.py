@@ -43,6 +43,7 @@ class ListaFumetti(QWidget):
 
     def load_fumetti(self):
         # open a file, where you stored the pickled data
+        ''''
         file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
 
         # dump information to that file
@@ -50,6 +51,9 @@ class ListaFumetti(QWidget):
 
         # close the file
         file.close()
+        '''
+        with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
+            data = pickle.load(f)
         print(data)
         self.fumetti.extend(data)
 
@@ -60,7 +64,7 @@ class ListaFumetti(QWidget):
         listview_model = QStandardItemModel(self.list_view)
         for fumetto in self.fumetti:
             item = QStandardItem()
-            riga = f"{fumetto.categoria} {fumetto.distributore} - {type(fumetto).__name__} {fumetto.barcode}"
+            riga = f"{fumetto.categoria} {fumetto.distributore} - {fumetto.barcode}"
             item.setText(riga)
             item.setEditable(False)
             font = item.font()

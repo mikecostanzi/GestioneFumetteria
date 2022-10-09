@@ -5,9 +5,9 @@ from Cliente.Controller.GestoreTessera import GestoreTessera
 
 class InserimentoTessera(QWidget):
 
-    def __init__(self, callback):
+    def __init__(self, parent = None):
         super(InserimentoTessera, self).__init__()
-        self.callback = callback
+        #self.callback = callback
         self.it = QVBoxLayout()
         self.qlines = {}
         self.add_info_text("idCliente", "ID")
@@ -37,6 +37,7 @@ class InserimentoTessera(QWidget):
     def aggiungiTessera(self):
 
         idCliente = int(self.qlines["idCliente"].text())
+        print("id")
 
         for value in self.qlines.values():
             if isinstance(value, QLineEdit):
@@ -47,13 +48,21 @@ class InserimentoTessera(QWidget):
         tessera = GestoreTessera
         try:
             nome = self.qlines["nome"].text()
+            print("nome")
             cognome = self.qlines["cognome"].text()
-            dataNascita = datetime.strptime(self.qlines["dataNascita"].text())
+            print("cognome")
+            dataNascita = datetime.strptime(self.qlines["dataNascita"].text(), "%d-%m-%Y")
+            print("datanascita")
             indirizzo = self.qlines["indirizzo"].text()
+            print("indirizzo")
             telefono = self.qlines["telefono"].text()
+            print("tel")
             email = self.qlines["email"].text()
-            dataIscrizione = datetime.strptime(self.qlines["dataIscrizione"].text())
+            print("email")
+            dataIscrizione = datetime.strptime(self.qlines["dataIscrizione"].text(), "%d-%m-%Y")
+            print("datai")
             numeroPunti = int(self.qlines["numeroPunti"].text())
+            print("punti")
         except:
             QMessageBox.critical(self, "Errore", "Alcuni campi sembrano errati", QMessageBox.Ok, QMessageBox.Ok)
             return
@@ -62,3 +71,4 @@ class InserimentoTessera(QWidget):
 
         self.callback()
         self.close()
+        print("cliente aggiunto con successo")

@@ -8,8 +8,9 @@ class GestoreFumetti(Fumetto):
     def __init__(self):
         super(Fumetto).__init__()
         self.fumetti = []
-        with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
-            self.fumetti = list(pickle.load(f))
+        if os.path.isfile(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle'):
+            with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
+                self.fumetti = list(pickle.load(f))
     def save_data(self):
         with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'wb') as f:
             pickle.dump(self.fumetti, f, pickle.HIGHEST_PROTOCOL)

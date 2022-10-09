@@ -12,6 +12,7 @@ class ListaFumetti(QWidget):
 
     def __init__(self, parent=None):
         super(ListaFumetti, self).__init__(parent)
+        self.fumetti = []
         h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
@@ -43,28 +44,32 @@ class ListaFumetti(QWidget):
 
     def load_fumetti(self):
         # open a file, where you stored the pickled data
-        ''''
-        file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
+        if os.path.isfile(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle'):
+            file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
 
-        # dump information to that file
-        data = pickle.load(file)
-
+            # dump information to that file
+            data = pickle.load(file)
+            print(data)
+            self.fumetti.extend(data)
+            print("Load avvenuto con successo")
         # close the file
-        file.close()
-        '''
+        # file.close()
+        '''''
         with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
             data = pickle.load(f)
-        print(data)
-        self.fumetti.extend(data)
+        '''''
+
+
 
 
     def update_ui(self):
-        self.fumetti = []
         self.load_fumetti()
         listview_model = QStandardItemModel(self.list_view)
         for fumetto in self.fumetti:
             item = QStandardItem()
+            print("funziona1")
             riga = f"{fumetto.categoria} {fumetto.distributore} - {fumetto.barcode}"
+            print("funziona2")
             item.setText(riga)
             item.setEditable(False)
             font = item.font()
@@ -72,6 +77,7 @@ class ListaFumetti(QWidget):
             item.setFont(font)
             listview_model.appendRow(item)
         self.list_view.setModel(listview_model)
+        print("update_ui avvenuto con successo")
 
     def show_selected_info(self):
         try:
@@ -83,6 +89,7 @@ class ListaFumetti(QWidget):
                 fumetto = GestoreFumetti().ricercaFumetto(barcode)
             self.vista_fumetto = VistaFumetto(fumetto, elimina_callback=self.update_ui)
             self.vista_fumetto.show()
+            print("show_selected avvenuto con successo")
         except IndexError:
             print("INDEX ERROR")
             return

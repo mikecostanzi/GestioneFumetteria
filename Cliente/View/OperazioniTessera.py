@@ -32,8 +32,8 @@ class OperazioniTessera(QWidget):
         self.setWindowTitle("Gestore Tessera")
 
     def load_tessere(self):
-        if os.path.isfile("/Cliente/Database/Clienti.pkl"):
-            with open("/Cliente/Database/Clienti.pkl", "rb") as f:
+        if os.path.isfile(os.getcwd()+'\\..\\Cliente\\Database\\Clienti.pkl'):
+            with open(os.getcwd()+'\\..\\Cliente\\Database\\Clienti.pkl', "rb") as f:
                 current = pickle.load(f)
                 self.tessere.extend(current)
 

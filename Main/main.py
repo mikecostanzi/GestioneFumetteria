@@ -13,5 +13,4 @@ if __name__ == '__main__':
     gui_main = Login()
 
     gui_main.show()
-    print("Fine")
     sys.exit(app.exec())

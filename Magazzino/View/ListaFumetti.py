@@ -1,10 +1,13 @@
 import os.path
 import pickle
 import os
+
+from PyQt5.QtCore import QStringListModel
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
 from Magazzino.Model.Fumetto import Fumetto
+
 from Magazzino.View.VistaFumetto import VistaFumetto
 from Magazzino.View.InserimentoFumetti import InserimentoFumetti
 
@@ -48,7 +51,7 @@ class ListaFumetti(QWidget):
             file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
 
             # dump information to that file
-            data = pickle.load(file)
+            data = list(pickle.load(file))
             print(data)
             self.fumetti.extend(data)
             print("Load avvenuto con successo")
@@ -59,25 +62,31 @@ class ListaFumetti(QWidget):
             data = pickle.load(f)
         '''''
 
-
-
-
     def update_ui(self):
-        self.load_fumetti()
-        listview_model = QStandardItemModel(self.list_view)
-        for fumetto in self.fumetti:
-            item = QStandardItem()
-            print("funziona1")
-            riga = f"{fumetto.categoria} {fumetto.distributore} - {fumetto.barcode}"
-            print("funziona2")
-            item.setText(riga)
-            item.setEditable(False)
-            font = item.font()
-            font.setPointSize(18)
-            item.setFont(font)
-            listview_model.appendRow(item)
-        self.list_view.setModel(listview_model)
-        print("update_ui avvenuto con successo")
+        try:
+            fumetto = Fumetto
+            self.load_fumetti()
+            listview_model = QStandardItemModel(self.list_view)
+            for fumetto in self.fumetti:
+                item = QStandardItem()
+                print("funziona1")
+                riga = f"{fumetto.categoria}"
+                nome = QStringListModel([f"{fumetto.categoria}"])
+                print("funziona2")
+                item.setText(riga)
+                item.setEditable(False)
+                font = item.font()
+                font.setPointSize(18)
+                item.setFont(font)
+                listview_model.appendRow(nome)
+            self.list_view.setModel(listview_model)
+            print("update_ui avvenuto con successo")
+        except Exception as messaggio:
+            print(type(messaggio))
+            print(messaggio.args)
+            print(messaggio)
+
+
 
     def show_selected_info(self):
         try:
@@ -90,7 +99,10 @@ class ListaFumetti(QWidget):
             self.vista_fumetto = VistaFumetto(fumetto, elimina_callback=self.update_ui)
             self.vista_fumetto.show()
             print("show_selected avvenuto con successo")
-        except IndexError:
+        except Exception as messaggio:
+            print(type(messaggio))
+            print(messaggio.args)
+            print(messaggio)
             print("INDEX ERROR")
             return
 

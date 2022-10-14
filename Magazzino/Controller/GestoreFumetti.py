@@ -9,11 +9,11 @@ class GestoreFumetti(Fumetto):
         super(Fumetto).__init__()
         self.fumetti = []
         if os.path.isfile(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle'):
-            with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
+            with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'r') as f:
                 self.fumetti = list(pickle.load(f))
     def save_data(self):
-        with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'wb') as f:
-            pickle.dump(self.fumetti, f, pickle.HIGHEST_PROTOCOL)
+        with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'w') as f:
+            pickle.dump(self.fumetti, f)
 
 
     def aggiungi_fumetto(self, barcode, categoria, distributore, editore, collana, sottocollana,quantita, prezzo):

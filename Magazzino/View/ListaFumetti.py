@@ -47,14 +47,21 @@ class ListaFumetti(QWidget):
 
     def load_fumetti(self):
         # open a file, where you stored the pickled data
-        if os.path.isfile(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle'):
-            file = open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
 
-            # dump information to that file
-            data = list(pickle.load(file))
-            print(data)
-            self.fumetti.extend(data)
-            print("Load avvenuto con successo")
+        try:
+            if os.path.isfile(os.getcwd() + '\\..\\Magazzino\\Database\\Fumetti.pickle'):
+                file = open(os.getcwd() + '\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
+
+                # dump information to that file
+                data = list(pickle.load(file))
+                print(data)
+                self.fumetti.extend(data)
+                print(self.fumetti)
+                print("Load avvenuto con successo")
+        except Exception as messaggio:
+            print(messaggio)
+            print(messaggio.args)
+            print(type(messaggio))
         # close the file
         # file.close()
         '''''
@@ -64,21 +71,21 @@ class ListaFumetti(QWidget):
 
     def update_ui(self):
         try:
-            fumetto = Fumetto
+
             self.load_fumetti()
             listview_model = QStandardItemModel(self.list_view)
             for fumetto in self.fumetti:
                 item = QStandardItem()
                 print("funziona1")
                 riga = f"{fumetto.categoria}"
-                nome = QStringListModel([f"{fumetto.categoria}"])
+                #nome = QStringListModel([f"{fumetto.categoria}"])
                 print("funziona2")
                 item.setText(riga)
                 item.setEditable(False)
                 font = item.font()
                 font.setPointSize(18)
                 item.setFont(font)
-                listview_model.appendRow(nome)
+                listview_model.appendRow(item)
             self.list_view.setModel(listview_model)
             print("update_ui avvenuto con successo")
         except Exception as messaggio:

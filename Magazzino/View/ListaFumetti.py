@@ -87,6 +87,7 @@ class ListaFumetti(QWidget):
         try:
             self.load_gabriel()
             listview_model = QStandardItemModel(self.list_view)
+            print(self.fumetti)
             for fumetto in self.fumetti:
                 item = QStandardItem()
                 print("funziona1")

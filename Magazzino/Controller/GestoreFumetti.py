@@ -17,8 +17,9 @@ class GestoreFumetti(Fumetto):
 
 
     def aggiungi_fumetto(self, barcode, categoria, distributore, editore, collana, sottocollana,quantita, prezzo):
-        self.setFumetto(barcode, categoria, distributore, editore, collana, sottocollana, quantita, prezzo)
-        self.fumetti.append(self.setFumetto)
+        fumetto = Fumetto()
+        fumetto.setFumetto(barcode, categoria, distributore, editore, collana, sottocollana, quantita, prezzo)
+        self.fumetti.append(fumetto)
         self.save_data()
 
     def getInfoFumetto(self):

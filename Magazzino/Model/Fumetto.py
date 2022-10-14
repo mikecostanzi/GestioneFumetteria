@@ -22,12 +22,6 @@ class Fumetto:
             "prezzo": self.prezzo,
 
         }
-    def get_categoria(self):
-        return {"categoria": self.categoria}
-    def get_distributore(self):
-        return {"distributore": self.distributore}
-    def get_barcode(self):
-        return {"barcode": self.barcode}
 
     def setFumetto(self,barcode, categoria, distributore, editore, collana, sottocollana,quantita, prezzo):
         self.barcode = barcode

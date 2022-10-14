@@ -7,15 +7,18 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushButton
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
 from Magazzino.Model.Fumetto import Fumetto
-
+from Magazzino import Database
+from Magazzino.Database.test import test
 from Magazzino.View.VistaFumetto import VistaFumetto
 from Magazzino.View.InserimentoFumetti import InserimentoFumetti
+
 
 class ListaFumetti(QWidget):
 
     def __init__(self, parent=None):
         super(ListaFumetti, self).__init__(parent)
         self.fumetti = []
+
         h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
@@ -44,7 +47,6 @@ class ListaFumetti(QWidget):
         file.close()
     '''
 
-
     def load_fumetti(self):
         # open a file, where you stored the pickled data
 
@@ -69,16 +71,27 @@ class ListaFumetti(QWidget):
             data = pickle.load(f)
         '''''
 
+    def load_gabriel(self):  # RICONTROLLO
+        print('passo3')
+
+        if os.path.isfile('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle'):
+            with open('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
+                current = list(pickle.load(f))
+                self.fumetti.extend(current)
+            print(self.fumetti)
+        else:
+            print('\nFile not found')
+        print('passo4')
+
     def update_ui(self):
         try:
-
-            self.load_fumetti()
+            self.load_gabriel()
             listview_model = QStandardItemModel(self.list_view)
             for fumetto in self.fumetti:
                 item = QStandardItem()
                 print("funziona1")
                 riga = f"{fumetto.categoria}"
-                #nome = QStringListModel([f"{fumetto.categoria}"])
+                # nome = QStringListModel([f"{fumetto.categoria}"])
                 print("funziona2")
                 item.setText(riga)
                 item.setEditable(False)
@@ -92,8 +105,6 @@ class ListaFumetti(QWidget):
             print(type(messaggio))
             print(messaggio.args)
             print(messaggio)
-
-
 
     def show_selected_info(self):
         try:

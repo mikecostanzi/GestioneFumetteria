@@ -8,11 +8,11 @@ class GestoreFumetti(Fumetto):
     def __init__(self):
         super(Fumetto).__init__()
         self.fumetti = []
-        if os.path.isfile('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle'):
-            with open('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
+        if os.path.isfile('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle'):
+            with open('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
                 self.fumetti = list(pickle.load(f))
     def save_data(self):
-        with open('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'wb') as f:
+        with open('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'wb') as f:
             pickle.dump(self.fumetti, f,pickle.HIGHEST_PROTOCOL)
 
 
@@ -22,6 +22,15 @@ class GestoreFumetti(Fumetto):
         self.fumetti.append(fumetto)
         self.save_data()
 
+    def ricerca_fumetto(self,barcode):
+        for fumetto in self.fumetti:
+            if barcode == fumetto.barcode:
+                return fumetto
+            return None
+    def rimuovi_fumetto(self,barcode):
+        for fumetto in self.fumetti:
+            if barcode == fumetto.barcode:
+                self.fumetti.remove(fumetto)
     def getInfoFumetto(self):
         info = self.getInfoFumetto()
         return info

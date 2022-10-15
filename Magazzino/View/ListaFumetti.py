@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QWidget, QHBoxLayout, QListView, QVBoxLayout, QPushB
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
 from Magazzino.Model.Fumetto import Fumetto
 from Magazzino import Database
-from Magazzino.Database.test import test
+
 from Magazzino.View.VistaFumetto import VistaFumetto
 from Magazzino.View.InserimentoFumetti import InserimentoFumetti
 
@@ -17,11 +17,13 @@ class ListaFumetti(QWidget):
 
     def __init__(self, parent=None):
         super(ListaFumetti, self).__init__(parent)
+        self.vista_fumetto = None
         self.fumetti = []
-
+        print('passo1')
         h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
+        print('passo2')
         h_layout.addWidget(self.list_view)
 
         buttons_layout = QVBoxLayout()
@@ -29,7 +31,7 @@ class ListaFumetti(QWidget):
         open_button.clicked.connect(self.show_selected_info)
         buttons_layout.addWidget(open_button)
 
-        new_button = QPushButton('Nuovo')
+        new_button = QPushButton('Inserisci')
         new_button.clicked.connect(self.show_new)
         buttons_layout.addWidget(new_button)
         buttons_layout.addStretch()
@@ -39,14 +41,7 @@ class ListaFumetti(QWidget):
         self.resize(600, 300)
         self.setWindowTitle("Gestisci Magazzino")
 
-    '''
-        file = open('Magazzino/Database/Fumetti.pickle', 'wb')
-        # dump information to that file
-        pickle.dump(list(range(19)),file)
-        # close the file
-        file.close()
-    '''
-
+    ''''
     def load_fumetti(self):
         # open a file, where you stored the pickled data
 
@@ -66,34 +61,38 @@ class ListaFumetti(QWidget):
             print(type(messaggio))
         # close the file
         # file.close()
-        '''''
+        
         with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
             data = pickle.load(f)
         '''''
 
-    def load_gabriel(self):  # RICONTROLLO
-        print('passo3')
-
-        if os.path.isfile('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle'):
-            with open('/home/mike/Scrivania/GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
-                current = list(pickle.load(f))
-                self.fumetti.extend(current)
-            print(self.fumetti)
-        else:
-            print('\nFile not found')
-        print('passo4')
+    def load_fumetti(self):  # RICONTROLLO
+        print('Inizio load')
+        try:
+            if os.path.isfile('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle'):
+                with open('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
+                    current = list(pickle.load(f))
+                    self.fumetti.extend(current)
+                print(self.fumetti)
+            else:
+                print('\nFile not found')
+        except Exception as m:
+            print(m)
+            print(m.args)
+            print(type(m))
+        print('Fine load')
 
     def update_ui(self):
         try:
-            self.load_gabriel()
+            self.load_fumetti()
             listview_model = QStandardItemModel(self.list_view)
-            print(self.fumetti)
+
+            print('Inizio update')
             for fumetto in self.fumetti:
                 item = QStandardItem()
-                print("funziona1")
-                riga = f"{fumetto.categoria}"
+                riga = f"{fumetto.categoria} {fumetto.distributore} {fumetto.editore} - {fumetto.barcode}"
+                print(riga)
                 # nome = QStringListModel([f"{fumetto.categoria}"])
-                print("funziona2")
                 item.setText(riga)
                 item.setEditable(False)
                 font = item.font()
@@ -106,23 +105,22 @@ class ListaFumetti(QWidget):
             print(type(messaggio))
             print(messaggio.args)
             print(messaggio)
+        print('Fine update')
 
     def show_selected_info(self):
         try:
             selected = self.list_view.selectedIndexes()[0].data()
-            tipo = selected.split("-")[1].strip().split(" ")[0]
-            barcode = int(selected.split("-")[1].strip().split(" ")[1])
-            fumetto = None
-            if tipo == "Fumetto":
-                fumetto = GestoreFumetti().ricercaFumetto(barcode)
-            self.vista_fumetto = VistaFumetto(fumetto, elimina_callback=self.update_ui)
+            barcode_selezionato = (selected.split("-")[1].strip().split(" ")[0])
+            print(barcode_selezionato)
+
+            fumetto_ricercato = GestoreFumetti.ricerca_fumetto(barcode_selezionato)
+            self.vista_fumetto = VistaFumetto(fumetto_ricercato,call_back = self.update_ui)
             self.vista_fumetto.show()
             print("show_selected avvenuto con successo")
         except Exception as messaggio:
             print(type(messaggio))
             print(messaggio.args)
             print(messaggio)
-            print("INDEX ERROR")
             return
 
     def show_new(self):

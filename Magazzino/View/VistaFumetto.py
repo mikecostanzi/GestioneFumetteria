@@ -1,7 +1,42 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
 
 class VistaFumetto(QWidget):
-    def __int__(self,fumetto,elimina_callback):
+    def __int__(self,fumetto,callback):
         super(VistaFumetto, self).__int__()
-        self.elimina_callback = elimina_callback
+        self.callback = callback
+        v_layout = QVBoxLayout()
+        barcode = f"Fumetto {fumetto.barcode}"
+        label_barcode = QLabel(barcode)
+        font_barcode = label_barcode.font()
+        font_barcode.setPointSize(30)
+        label_barcode.setFont(font_barcode)
+        v_layout.addWidget(label_barcode)
+
+        v_layout.addItem(QSpacerItem(20,40,QSizePolicy.Minimum,QSizePolicy.Expanding))
+        v_layout.addWidget(QLabel(f"Categoria: {fumetto.categoria}"))
+        v_layout.addWidget(QLabel(f"Distributore: {fumetto.distributore}"))
+        v_layout.addWidget(QLabel(f"Editore: {fumetto.editore}"))
+        v_layout.addWidget(QLabel(f"Collana: {fumetto.collana}"))
+        v_layout.addWidget(QLabel(f"Sottocollana: {fumetto.sottocollana}"))
+        v_layout.addWidget(QLabel(f"Quantità: {fumetto.quantita}"))
+        v_layout.addWidget(QLabel(f"Prezzo: {fumetto.prezzo}"))
+
+        v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+
+        b_modifica = QPushButton("Modifica")
+        b_modifica.clicked.connect(lambda : self.modifica(fumetto))
+        v_layout.addWidget(b_modifica)
+
+        b_elimina = QPushButton("Elimina")
+        b_elimina.clicked.connect(lambda : self.elimina(fumetto))
+        v_layout.addWidget(b_elimina)
+        self.setLayout(v_layout)
+        self.setWindowTitle("Fumetto")
+
+
+    def modifica(self,fumetto):
+
+        pass
+    def elimina(self,fumetto):
+        pass

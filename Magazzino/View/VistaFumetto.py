@@ -5,6 +5,7 @@ class VistaFumetto(QWidget):
     def __int__(self,fumetto,callback):
         super(VistaFumetto, self).__int__()
         self.callback = callback
+        print('--- Inizio layout vista fumetto ---')
         v_layout = QVBoxLayout()
         barcode = f"Fumetto {fumetto.barcode}"
         label_barcode = QLabel(barcode)
@@ -31,6 +32,7 @@ class VistaFumetto(QWidget):
         b_elimina = QPushButton("Elimina")
         b_elimina.clicked.connect(lambda : self.elimina(fumetto))
         v_layout.addWidget(b_elimina)
+        print('--- Fine layout vista fumetto ---')
         self.setLayout(v_layout)
         self.setWindowTitle("Fumetto")
 

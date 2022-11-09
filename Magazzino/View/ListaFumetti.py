@@ -19,11 +19,11 @@ class ListaFumetti(QWidget):
         super(ListaFumetti, self).__init__(parent)
         self.vista_fumetto = None
         self.fumetti = []
-        print('passo1')
+        print('--- Inizio layout lista fumetti ---')
         h_layout = QHBoxLayout()
         self.list_view = QListView()
         self.update_ui()
-        print('passo2')
+
         h_layout.addWidget(self.list_view)
 
         buttons_layout = QVBoxLayout()
@@ -36,36 +36,10 @@ class ListaFumetti(QWidget):
         buttons_layout.addWidget(new_button)
         buttons_layout.addStretch()
         h_layout.addLayout(buttons_layout)
-
+        print('--- Fine layout lista fumetti ---')
         self.setLayout(h_layout)
         self.resize(600, 300)
         self.setWindowTitle("Gestisci Magazzino")
-
-    ''''
-    def load_fumetti(self):
-        # open a file, where you stored the pickled data
-
-        try:
-            if os.path.isfile(os.getcwd() + '\\..\\Magazzino\\Database\\Fumetti.pickle'):
-                file = open(os.getcwd() + '\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb')
-
-                # dump information to that file
-                data = list(pickle.load(file))
-                print(data)
-                self.fumetti.extend(data)
-                print(self.fumetti)
-                print("Load avvenuto con successo")
-        except Exception as messaggio:
-            print(messaggio)
-            print(messaggio.args)
-            print(type(messaggio))
-        # close the file
-        # file.close()
-        
-        with open(os.getcwd()+'\\..\\Magazzino\\Database\\Fumetti.pickle', 'rb') as f:
-            data = pickle.load(f)
-        '''''
-
     def load_fumetti(self):  # RICONTROLLO
         print('Inizio load')
         try:
@@ -73,7 +47,6 @@ class ListaFumetti(QWidget):
                 with open('../GestioneFumetteria/Magazzino/Database/Fumetti.pickle', 'rb') as f:
                     current = list(pickle.load(f))
                     self.fumetti.extend(current)
-                print(self.fumetti)
             else:
                 print('\nFile not found')
         except Exception as m:
@@ -110,11 +83,13 @@ class ListaFumetti(QWidget):
     def show_selected_info(self):
         try:
             selected = self.list_view.selectedIndexes()[0].data()
-            barcode_selezionato = (selected.split("-")[1].strip().split(" ")[0])
+            barcode_selezionato = int(selected.split("-")[1].strip().split(" ")[0])
+            print('barcode selezionato:')
             print(barcode_selezionato)
 
-            fumetto_ricercato = GestoreFumetti.ricerca_fumetto(barcode_selezionato)
-            self.vista_fumetto = VistaFumetto(fumetto_ricercato,call_back = self.update_ui)
+            fumetto_ricercato = GestoreFumetti()
+            f = fumetto_ricercato.ricerca_fumetto(barcode_selezionato)
+            self.vista_fumetto = VistaFumetto(f,call_back = self.update_ui)
             self.vista_fumetto.show()
             print("show_selected avvenuto con successo")
         except Exception as messaggio:

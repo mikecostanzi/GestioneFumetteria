@@ -84,12 +84,14 @@ class ListaFumetti(QWidget):
         try:
             selected = self.list_view.selectedIndexes()[0].data()
             barcode_selezionato = int(selected.split("-")[1].strip().split(" ")[0])
-            print('barcode selezionato:')
+            print('Barcode selezionato:')
             print(barcode_selezionato)
 
             fumetto_ricercato = GestoreFumetti()
             f = fumetto_ricercato.ricerca_fumetto(barcode_selezionato)
-            self.vista_fumetto = VistaFumetto(f,call_back = self.update_ui)
+            print("Stampa da ListaFumetti:")
+            print(f)
+            self.vista_fumetto = VistaFumetto(f)
             self.vista_fumetto.show()
             print("show_selected avvenuto con successo")
         except Exception as messaggio:

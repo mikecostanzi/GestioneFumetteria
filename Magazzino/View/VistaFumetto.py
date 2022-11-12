@@ -1,12 +1,15 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QSpacerItem, QSizePolicy, QPushButton
 from Magazzino.Controller.GestoreFumetti import GestoreFumetti
+from Magazzino.Model.Fumetto import Fumetto
+
 
 class VistaFumetto(QWidget):
-    def __int__(self,fumetto,callback):
+    def __int__(self, fumetto, call_back):
         super(VistaFumetto, self).__int__()
-        self.callback = callback
+        self.call_back=call_back
         print('--- Inizio layout vista fumetto ---')
         v_layout = QVBoxLayout()
+
         barcode = f"Fumetto {fumetto.barcode}"
         label_barcode = QLabel(barcode)
         font_barcode = label_barcode.font()

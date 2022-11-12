@@ -24,12 +24,26 @@ class GestoreFumetti(Fumetto):
         self.save_data()
 
     def ricerca_fumetto(self,barcode):
-        print('Inizio ricerca')
+        print('Inizio ricerca GestoreFumetti')
+        '''''''''''
         for fumetto in self.fumetti:
-            if barcode == fumetto.barcode:
+            if fumetto.barcode == barcode:
+                print("Barcode trovato nella ricerca: ")
+                print(fumetto.barcode)
+                print(fumetto)
                 return fumetto
+
                 print('Ricerca avvenuta con successo')
-            return None
+        '''''
+        for fumetto in self.fumetti:
+            if fumetto.barcode == barcode:
+                f = fumetto.getFumetto()
+                print(f)
+                return fumetto
+        return None
+
+
+
 
     def rimuovi_fumetto(self,barcode):
         for fumetto in self.fumetti:
